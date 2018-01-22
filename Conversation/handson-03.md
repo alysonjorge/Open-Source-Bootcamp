@@ -6,11 +6,11 @@ Nesta seção, criaremos um bot usando o serviço Azure Bot que usa o Language U
 
 Para criar o seu bot; Faça login no portal Azure, selecione  **Criar novo recurso**  na barra de menu e selecione  **AI + Serviços Cognitivos**.
 
-![img](/images/00.png)
+![img](images/00.png)
 
 Você pode navegar pelas sugestões ou procurar por **Web App Bot.**
 
-![img](/images/01.png)
+![img](images/01.png)
 
 Uma vez selecionada, a lâmina do Serviço Bot deve aparecer; que será familiar para os usuários dos serviços Azure. Para aqueles que não são, aqui você pode especificar informações sobre o seu serviço para o Bot Service usar na criação do seu bot, como onde ele vai residir, qual a assinatura e assim por diante. Na  **barra de serviço**  do  **Bot** , forneça as informações necessárias e clique em  **Criar**. Isso cria e implanta o Bot Service e o aplicativo LUIS para o Azure. Alguns campos interessantes:
 
@@ -21,7 +21,7 @@ Uma vez selecionada, a lâmina do Serviço Bot deve aparecer; que será familiar
 - Para essa demo, selecione o template **Language understanding (C#)** no campo do  **Bot**   **Template**.
 - Para o ultimo campo obrigatório, escolha o  **Azure Storage**  onde você deseja armazenar o estado de conversação do seu bot. Pense nisso como onde o bot armazena o status da conversa de cada usuário.
 
-![img](/images/02.png)
+![img](images/02.png)
 
 Agora que você está pronto, você pode clicar em  **Create**. O Azure definirá a criação do seu bot, incluindo os recursos necessários para sua operação e uma conta LUIS para hospedar seu modelo de linguagem natural. Uma vez concluído, você receberá uma notificação através do sino no canto superior direito do portal Azure.
 
@@ -37,7 +37,7 @@ Então, agora você deve ter um bot funcionado. Vamos testar.
 
 Uma vez que o bot esteja registrado, clique  **em Testar no Chat da Web**  para abrir o painel de bate-papo da Web. Digite &quot;hello&quot; no Chat na Web.
 
-![img](/images/03.png)
+![img](images/03.png)
 
 O bot responde dizendo: &quot;You have reached Greeting. You said: hello&quot;. Isso confirma que o bot recebeu sua mensagem e passou para um aplicativo LUIS padrão que criamos. Este aplicativo LUIS padrão detectou uma intenção de saudação. **Note** : Ocasionalmente, a primeira mensagem ou duas após a inicialização talvez precise ser tentada novamente antes que o bot responda.
 
@@ -75,7 +75,7 @@ Seu aplicativo LUIS agora está pronto para o seu Bot. Se o usuário pedir para 
 
 O Serviço Bot está configurado para funcionar em um ambiente de desenvolvimento tradicional; sincronize seu código fonte com o GIT e trabalhe no seu ambiente de dev. favor. Dito isto, o Azure Bot Service também oferece a capacidade de editar diretamente no portal; o que é ótimo para o nosso experimento. Clique em Criar e clique em Abrir **editor de código on-line**.
 
-![img](/images/04.png)
+![img](images/04.png)
 
 Primeiro, alguns preâmbulos. No editor de código, abra BasicLuisDialog.cs. Ele contém o código para lidar com Cancelar, Cumprimento, Ajuda e Nenhum intenta com o aplicativo LUIS.
 
@@ -240,7 +240,7 @@ Agora que a parte cortar e colar é feita, você pode clicar com o botão direit
 
 No Portal Azure, clique em Testar **no Chat da Web**  para testar o bot. Tente digitar mensagens como &quot;Criar uma nota&quot;, &quot;ler minhas anotações&quot; e &quot;apagar notas&quot;. Como você está usando linguagem natural, você tem mais flexibilidade sobre como você declara seu pedido e, por sua vez, o recurso Active Learning da LUIS pode ser usado de tal forma que você pode abrir seu aplicativo LUIS e pode fazer sugestões sobre coisas que você disse, T entendo e pode tornar seu aplicativo mais eficaz.
 
-![img](/images/05.png)
+![img](images/05.png)
 
 Dica: se você achar que seu bot nem sempre reconhece a intenção ou as entidades corretas, melhore o desempenho do seu aplicativo LUIS, dando mais exemplos de enunciados para treiná-lo. Você pode redigir seu aplicativo LUIS sem qualquer modificação no código do seu bot.
 
