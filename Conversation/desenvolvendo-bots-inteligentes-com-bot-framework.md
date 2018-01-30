@@ -1,8 +1,10 @@
 <a name="HOLTitle"></a>
-# Construindo Bots Inteligentes com o Microsoft Bot Framework #
+
+# Hands-on Lab #1 - Web App Bot no Azure, QnA Maker #
 
 ---
 <a name="Overview"></a>
+
 ### Visão geral ###
 
 Os robôs de software estão em toda parte. Você provavelmente interage com eles todos os dias sem perceber. Bots, especialmente de bate-papo e mensagens, estão mudando a maneira como interagimos com negócios, comunidades e até mesmo entre nós mesmos. Graças aos avanços de velocidade leve na inteligência artificial (AI) e à pronta disponibilidade de serviços de AI, os bots não estão apenas se tornando mais avançados e personalizados, mas também são mais acessíveis aos desenvolvedores.
@@ -12,6 +14,7 @@ Independentemente da linguagem ou plataforma de destino, desenvolvedores que cri
 O  [Microsoft Bot Framework](https://dev.botframework.com/) , combinado com o  [Microsoft QnA Maker](https://qnamaker.ai/) , fornece as ferramentas que os desenvolvedores precisam para construir e publicar bots inteligentes que interagem naturalmente com usuários que usam uma variedade de serviços. Neste laboratório, você criará um bot usando o Visual Studio Code e o Microsoft Bot Framework e vai conectá-lo a uma base de conhecimento construída com o QnA Maker. Então você irá interagir com o bot usando o Skype - um dos muitos serviços populares com os quais os bots construídos com o Microsoft Bot Framework podem ser integrados.
 
 <a name="Objectives"></a>
+
 ### Objetivos ###
 
 Neste laboratório prático, você aprenderá como:
@@ -24,6 +27,7 @@ Neste laboratório prático, você aprenderá como:
 
 
 <a name="Prerequisites"></a>
+
 ### Pré-requisitos ###
 
 Para completar este laboratório prático, você precisará de:
@@ -36,6 +40,7 @@ Para completar este laboratório prático, você precisará de:
 - [Skype](https://www.skype.com/pt-br/get-skype/)
 
 <a name="Resources"></a>
+
 ### Recursos ###
 
 [Clique aqui](https://a4r.blob.core.windows.net/public/bots-resources.zip) para baixar um arquivo zip contendo o conteúdo usado ​​neste laboratório. Copie o conteúdo do arquivo zip em uma pasta no seu disco.
@@ -43,6 +48,7 @@ Para completar este laboratório prático, você precisará de:
 ---
 
 <a name="Exercises"></a>
+
 ### Exercícios ###
 
 Este laboratório prático inclui os seguintes exercícios:
@@ -59,6 +65,7 @@ Tempo estimado para completar este laboratório:  **60**  minutos.
 
 
 <a name="Exercise1"></a>
+
 ## Exercício 1: Criar um serviço de bot no Azure ##
 
 O primeiro passo na criação de um bot é fornecer um local para hospedar o bot, bem como configurar os serviços que o bot usará.  [O Azure Web Apps](https://azure.microsoft.com/services/app-service/web/) é perfeito para hospedar aplicativos de bot e o Azure Bot Service foi projetado para fornecer e conectar esses serviços para você. Neste exercício, você criará e configurará um Serviço Azure Bot.
@@ -132,8 +139,6 @@ _Abrindo o Serviço Bot_
 
 1. Com essas informações, retorne ao Web App Bot criado anteriormente no portal do Azure. No menu, selecione a opção **Application Settings** na categoria **App Service Settings**. Nesse passo, armazenaremos as informações copiadas anteriormente nas variáveis da aplicação Web. Para isso, encontre as variáveis **QnAKnowledgebaseId** e **QnASubscriptionKey** dentro de **App settings**. Cole as chaves em seus respectivos campos e clique em **Save**.
 
-    
-
 1. Para garantir que esses serviços possam se comunicar entre si, você pode testar a comunicação do bot no editor do serviço Azure Bot. Selecione a opção Test in Web Chat para testarmos a conexão com o QnA Maker. Assim que o chat estiver disponível, digite "Hi". Seu bot deve responder com a "Hello", ou a mensagem apresentada na base de conhecimentos criada nos passos anteriores.
 
     ![image](images/new13.png)
@@ -142,6 +147,7 @@ Com o Bot Service implantado e configurado, o próximo passo é atualizar o serv
 
 
 <a name="Exercise2"></a>
+
 ## Exercício 2: Comece com o Microsoft QnA Maker ##
 
 [O Microsoft QnA Maker](https://qnamaker.ai/) faz parte do  [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/) , que é um conjunto de APIs para a construção de aplicativos inteligentes. Ao invés de infundir um bot com inteligência, escrevendo um código que tenta antecipar todas as perguntas que um usuário possa fazer e fornecer uma resposta, você pode conectá-lo a uma base de conhecimento de perguntas e respostas criadas com o QnA Maker. Um cenário de uso comum é criar uma base de conhecimento a partir de uma FAQ para que o bot possa responder a questões específicas do domínio, como &quot;Como faço para encontrar a chave do produto do Windows&quot; ou &quot;Onde posso baixar o Visual Studio Code?&quot;
@@ -187,6 +193,7 @@ Este é um excelente começo, mas uma resposta simples à saudação &quot;Hi&qu
 
 
 <a name="Exercise3"></a>
+
 ## Exercício 3: Expanda a base de conhecimento do QnA Maker ##
 
 Você pode inserir perguntas e respostas em uma base de conhecimento do QnA Maker manualmente, ou pode importá-las de uma variedade de fontes, incluindo sites e arquivos de texto locais. Neste exercício, você usará ambas as técnicas para preencher a base de conhecimento com perguntas e respostas e, em seguida, publicar a base de conhecimento atualizada para o seu bot usar.
@@ -250,6 +257,7 @@ Com uma amostra de base de conhecimento implantada, agora é hora de prestar ate
 
 
 <a name="Exercise4"></a>
+
 ## Exercício 4: Implante o bot e configure a integração contínua ##
 
 Quando você implantou um Serviço de Bot no  [Exercício 1](https://github.com/CommunityBootcamp/Maratona-BOTs/blob/master/Desenvolvendo%20Bots%20inteligentes%20com%20o%20Microsoft%20Bot%20Framework.md#Exercise1), um aplicativo da Web Azure foi criado para hospedar o bot. Mas o bot ainda precisa ser escrito e implantado no Azure Web App. Neste exercício, você codificará o bot usando o código-fonte gerado para você pelo QnA Maker. Em seguida, você criará um repositório Git local para o código, conectá-lo-á ao aplicativo Azure Web e publicará o bot para o Azure, tudo isso usando o Visual Studio Code.
@@ -347,6 +355,7 @@ Neste exercício, você criou um projeto para o seu bot no Visual Studio Code e 
 
 
 <a name="Exercise5"></a>
+
 ## Exercício 5: depurar o bot localmente ##
 
 Tal como acontece com qualquer código de aplicação que você escreve, as alterações ao código do bot precisam ser testadas e depuradas localmente antes de serem implantadas na produção. Para ajudar a depurar bots, a Microsoft oferece o  [Emulador](https://emulator.botframework.com/) do  [Bot Framework](https://emulator.botframework.com/) . Neste exercício, você aprenderá a usar o Visual Studio Code e o Bot Framework Emulator para depurar seus bots.
@@ -456,6 +465,7 @@ Neste ponto, você tem um bot totalmente funcional e sabe como depurá-lo, inici
 
 
 <a name="Exercise6"></a>
+
 ## Exercício 6: Conecte o bot à base de conhecimento ##
 
 Neste exercício, você conectará seu bot à base de conhecimento do QnA Maker que você criou anteriormente para que o bot possa conversar de forma mais inteligente. Isso envolve a recuperação de algumas chaves do Portal Azure, copiando-as para um arquivo de configuração no projeto do bot e redistribuindo o bot para o Azure.
@@ -578,12 +588,14 @@ _Rejeitando o aviso de sincronização_
 Agora que seu bot foi escrito, atualizado e testado, o passo final é testá-lo fora do depurador em um canal conectado.
 
 <a name="Exercise7"></a>
+
 ## Exercício 7: teste o bot com o Skype ##
 
 Uma vez implantados, os bots podem ser conectados a canais como Skype, Slack, Microsoft Teams e Facebook Messenger, onde você pode interagir com eles da maneira como você interagir com qualquer outro usuário. Neste exercício, você testará seu bot com o Skype.
 
 1. Se o Skype ainda não estiver instalado no seu computador, instale-o agora. Você pode baixar o Skype para Windows, MacOS e Linux em  [https://www.skype.com/pt-br/get-skype/](https://www.skype.com/pt-br/get-skype/).
-2. Retorne ao seu Serviço Bot no Portal Azure e clique em  **Canais**  .
+
+1. Retorne ao seu Serviço Bot no Portal Azure e clique em  **Canais**  .
 
     ![Opening the Channels page](images/portal-bot-channel-tab.png)
 _Abrindo a página Canais_
@@ -618,6 +630,7 @@ _Conversando com o bot no Skype_
 Você agora possui um bot totalmente funcional criado com o Microsoft Bot Framework, infundido com informações com o Microsoft QnA Maker, e está disponível para qualquer pessoa no mundo com quem interagir. Sinta-se à vontade para conectar o seu bot a outros canais e testá-lo em diferentes cenários. E se você quiser fazer o bot mais inteligente, considere expandir a base de conhecimento QnA com perguntas e respostas adicionais. Por exemplo, você poderia usar as  [FAQ online](https://docs.botframework.com/en-us/faq/) para o Bot Framework para treinar o bot para responder perguntas sobre o próprio framework.
 
 <a name="Summary"></a>
+
 ## Resumo ##
 
 Neste laboratório prático, você aprendeu a:
