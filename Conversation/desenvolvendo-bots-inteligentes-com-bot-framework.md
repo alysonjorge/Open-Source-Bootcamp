@@ -64,24 +64,33 @@ Tempo estimado para completar este laboratório:  **60**  minutos.
 O primeiro passo na criação de um bot é fornecer um local para hospedar o bot, bem como configurar os serviços que o bot usará.  [O Azure Web Apps](https://azure.microsoft.com/services/app-service/web/) é perfeito para hospedar aplicativos de bot e o Azure Bot Service foi projetado para fornecer e conectar esses serviços para você. Neste exercício, você criará e configurará um Serviço Azure Bot.
 
 1. Abra o  [Portal Azure](https://portal.azure.com/) no seu navegador. Se você for solicitado a fazer login, faça isso usando sua conta Microsoft.
-1. Clique  **+ Novo** , seguido de  **Inteligência + análise**  e, em seguida, **Bot Service (preview)**.
+1. Clique  **+ Novo** , seguido de  **Ai + Cognitive Services**  e, em seguida, **Web App Bot**.
 
-    ![Creating a new Azure Bot Service](images/portal-new-bot-service.png)
+    ![Creating a new Azure Bot Service](images/new01.png)
 _Criando um serviço Azure Bot_
 
-1. Digite um nome como &quot;qnafactbot&quot; (sem aspas) na caixa  **Nome**  da  **aplicação**. Este nome deve ser exclusivo dentro de sua assinatura do Azure, portanto, verifique se uma marca de verificação verde aparece ao lado. Verifique se  **Criar novo**  está selecionado em  **Grupo de recursos**  e digite o nome do grupo de recursos &quot;BotsResourceGroup&quot; (novamente, sem aspas). Em seguida, selecione a localização mais próxima e clique em  **Criar**.
+1. Digite um nome como &quot;qnafactbot&quot; (sem aspas) na caixa  **Nome**  da  **aplicação**. Este nome deve ser exclusivo dentro de sua assinatura do Azure, portanto, verifique se uma marca de verificação verde aparece ao lado. Verifique se  **Criar novo**  está selecionado em  **Grupo de recursos**  e digite o nome do grupo de recursos &quot;BotsResourceGroup&quot; (novamente, sem aspas).
+    ![Creating a new Azure Bot Service](images/new02.png)
+_Criando um serviço Azure Bot_
 
-    ![Configuring a new Azure Bot Service](images/portal-create-new-bot-service.png)
+1. No campo **Bot Template**, selecione a linguagem de programação Node.js. Em seguida, selecione **Question and Answer** e clique em **Select**.
+
+    ![Creating a new Azure Bot Service](images/new02c.png)
+_Criando um serviço Azure Bot_
+
+1. Retornando as configurações do seu **Web App Bot**, selecione um **Pricing Tier**, valide as informações do **Azure Storage** e ative o **Aplication Insigts** de acordo com sua necessidade. Selecione a localização mais próxima e clique em  **Criar**.
+
+    ![Configuring a new Azure Bot Service](images/new02b.png)
 _Configurando um novo serviço Azure Bot_
 
 1. Clique em  **Grupos de recursos**  na barra à esquerda, seguido de  **BotsResourceGroup**  para abrir o grupo de recursos criado para o Serviço Bot.
 
-    ![Opening the resource group](images/portal-open-resource-group.png)
+    ![Opening the resource group](images/new03.png)
 _Abrindo o grupo de recursos_
 
 1. Aguarde até que &quot;Implantando&quot; vire &quot;Sucesso&quot; indicando que o Serviço Bot foi implantado com sucesso. Você pode clicar no botão  **Atualizar**  na parte superior da lâmina para atualizar o status da implantação.
 
-    ![Successful deployment](images/portal-app-deployment-status.png)
+    ![Successful deployment](images/new04.png)
 _Implementação bem-sucedida_
 
 1. Clique em  **qnafactbot**  (ou no nome que você digitou na Etapa 3) para abrir o Serviço de Aplicativos criado para o seu bot.
@@ -89,55 +98,45 @@ _Implementação bem-sucedida_
     ![Opening the Bot Service](images/portal-click-bot-service.png)
 _Abrindo o Serviço Bot_
 
-1. Clique em  **Criar ID e senha da Microsoft App**. Se você for solicitado a fazer login novamente, faça isso usando sua conta Microsoft.
+1. Para obter o **Microsoft App ID** e **Password**, selecione a opção **Settings** na sessão **Bot Management**. Nessa tela, encontre o campo **Microsoft App ID** e clique no link **Manage**.
 
-    ![Creating an app ID and password](images/portal-click-create-msft-app.png)
-_Criando um ID e uma senha do aplicativo_
+    ![image](images/new05.png)
 
-1. Clique em  **Gerar uma senha de aplicativo para continuar**.
+1. Nessa página, é possível gerenciar o **Microsoft App ID** e gerar uma nova **Password**.
 
-    ![Generating an app password](images/portal-generate-password.png)
-_Gerando uma senha de aplicativo_
+    ![image](images/new06.png)
 
-1. Copie a senha para a área de transferência.  **Você não poderá recuperar essa senha após esta etapa** , mas será necessário para usá-la em um exercício posterior. Quando a senha for salva, clique em  **OK**  para descartar a caixa de diálogo.
+1. Retorne ao Web App Bot criado anteriormente no portal do Azure, e selecione a opção **Test in Web Chat** para iniciarmos a conexão com o QnA Maker. Assim que o chat estiver disponível, digite "Hi". Seu bot deve responder com as instruções de configuração do QnA Maker.
 
-    ![Copying the app password](images/portal-new-password-generated.png)
-_Copiando a senha do aplicativo_
+    ![image](images/new07.png)
 
-1. Revise as informações de registro do aplicativo e, em seguida, clique em  **Concluir e volte para o Bot Framework**.
+1. Abra a página do [QnA Maker](https://qnamaker.ai/), faça login com a sua conta Microsoft e permita que a aplicação acesse as informações de sua conta. Em seguida, leia os termos de uso do **Microsoft Cognitive Services** e a **Política de Privacidade da Microsoft**. Caso concorde, marque a caixa e clique em **Continue**.
 
-    ![Finalizing the app registration](images/portal-click-finish.png)
-_Finalizando o registro do aplicativo_
+    ![image](images/new08.png)
 
-1. Cole a senha copiada para a área de transferência na etapa 9 na caixa de senha.
+1. No menu superior, clique na opção **Create new Service**. Nessa tela, preencha somente a opção **Service Name** e clique em **Create**, no final da página.
 
-    ![Pasting the app password](images/portal-paste-app-password.png)
-_Colando a senha do aplicativo_
+    ![image](images/new09.png)
 
-1. Clique em  **Nodes**. Em seguida, clique em  **Pergunta e resposta**  e clique em  **Criar bot**. Se você for solicitado a fazer login novamente, faça isso usando sua conta Microsoft. Além disso, se você for solicitado a permissão para o QnA Maker acessar suas informações, clique em  **Sim**.
+1. Após crirar a sua base de conhecimento, é necessário realizar uma publicação inicial, antes da conexão com o seu Web App Bot. Para isso, clique no botão **Publish** na página da sua base de conhecimento, e **Publish** novamente na página de confirmação. A seguinte página deve ser exibida em caso de sucesso.
 
-    ![Selecting a language and template](images/portal-select-template.png)
-_Selecionando um idioma e um modelo_
+    ![image](images/new10b.png)
 
-1. Verifique a caixa de  **concordar**  e, em seguida, clique em  **OK**. (Se você for apresentado com a opção de se conectar a uma base de conhecimento existente ou criando uma nova, escolha a última.)
+1. Agora, precisaremos copiar as informações **QnAKnowledgebaseId** e **QnASubscriptionKey** do QnA Maker para conctarmos com nosso Web App Bot. Assim que a Knowledge Base estiver pronta, é possível encontrar o **QnAKnowledgebaseId** na URL da página. Copie essa informação e armazene para uso posterior.
 
-    ![Connecting to QnA Maker](images/connect-bot-to-qnamaker.png)
-_Conectando-se ao QnA Maker_
+    ![image](images/new10.png)
 
-1. Após uma breve pausa, o Serviço Bot abrirá no portal e exibirá o editor do Serviço Bot, conforme ilustrado abaixo. Por trás das cenas, o bot foi registrado, uma aplicação da Web Azure foi criada para hospedá-lo e o bot foi conectado ao Microsoft QnA Maker.
+1. Para encontrar o **QnASubscriptionKey**, selecione o seu usuário no canto superior direito da página, e clique na opção **Subscription keys**. Nessa tela, é possível copiar o **QnASubscriptionKey**. Copie essa informação e armazene para uso posterior.
 
-    ![The Bot Service editor](images/portal-editor-new.png)
-_O editor do Bot Service_
+    ![image](images/new11.png)
 
-1. Para garantir que esses serviços possam se comunicar entre si, você pode testar a comunicação do bot no editor do serviço Azure Bot. Para testar, digite a palavra &quot;Hi&quot; (sem aspas) na janela de bate-papo no lado direito da página. Em seguida, pressione  **Enter**  ou clique no ícone do papel-avião.
+1. Com essas informações, retorne ao Web App Bot criado anteriormente no portal do Azure. No menu, selecione a opção **Application Settings** na categoria **App Service Settings**. Nesse passo, armazenaremos as informações copiadas anteriormente nas variáveis da aplicação Web. Para isso, encontre as variáveis **QnAKnowledgebaseId** e **QnASubscriptionKey** dentro de **App settings**. Cole as chaves em seus respectivos campos e clique em **Save**.
 
-    ![Testing bot communication](images/portal-send-chat-test.png)
-_Testando a comunicação do bot_
+    
 
-1. Aguarde que o bot responda com a palavra &quot;Hello&quot;, indicando que seu bot está configurado e pronto para ir.
+1. Para garantir que esses serviços possam se comunicar entre si, você pode testar a comunicação do bot no editor do serviço Azure Bot. Selecione a opção Test in Web Chat para testarmos a conexão com o QnA Maker. Assim que o chat estiver disponível, digite "Hi". Seu bot deve responder com a "Hello", ou a mensagem apresentada na base de conhecimentos criada nos passos anteriores.
 
-    ![Chatting with your bot](images/portal-test-chat.png)
-_Conversando com seu bot_
+    ![image](images/new13.png)
 
 Com o Bot Service implantado e configurado, o próximo passo é atualizar o serviço Microsoft QnA Maker ao qual o bot está conectado.
 
@@ -159,7 +158,7 @@ _Fazendo login no QnA Maker_
     ![Editing a QnA service](images/qna-click-edit-icon.png)
 _Editando um serviço QnA_
 
-1. Clique em  **Configurações**. Substitua o valor na caixa  **Nome**  do  **serviço**  por &quot;QnA Factbot&quot; (sem aspas). Em seguida, clique em  **Salvar e Armazenar**  para salvar a alteração.
+1. Clique em  **Configurações**. Substitua o valor na caixa  **Nome**  do  **serviço**  por &quot;QnA Factbot&quot; (sem aspas). Em seguida, clique em  **Salvar e Retreinar**  para salvar a alteração.
 
     ![Updating the service name](images/qna-save-service-name.png)
 _Atualizando o nome do serviço_
@@ -169,7 +168,7 @@ _Atualizando o nome do serviço_
     ![Opening the Knowledge Base page](images/qna-select-kb-tab.png)
 _Abrindo a página da Base de Conhecimento_
 
-1. Substitua &quot;Hi&quot; na coluna Resposta com &quot;Bem-vindo ao QnA Factbot!&quot; Em seguida, clique em  **Salvar e Armazenar**  para salvar a alteração.
+1. Substitua &quot;Hi&quot; na coluna Resposta com &quot;Bem-vindo ao QnA Factbot!&quot; Em seguida, clique em  **Salvar e Retreinar**  para salvar a alteração.
 
     ![Updating a response](images/qna-update-default-answer.png)
 _Atualizando uma resposta_
@@ -201,12 +200,12 @@ _Abrindo a página Configurações_
     ```javascript
     https://traininglabservices.azurewebsites.net/help/faqs.html
     ```
-1. Clique em  **Salvar e Armazenar**  para preencher a base de conhecimento com perguntas e respostas do site da Web, cujo URL você forneceu.
+1. Clique em  **Salvar e Retreinar**  para preencher a base de conhecimento com perguntas e respostas do site da Web, cujo URL você forneceu.
 
     ![Importing questions and answers from a URL](images/qna-add-faq-url.png)
 _Importando perguntas e respostas de um URL_
 
-1. Clique na  **Base de Conhecimento**  e confirme que foram adicionadas seis novas perguntas e respostas. Em seguida, clique em  **Salvar e Armazenar**  para salvar as alterações.
+1. Clique na  **Base de Conhecimento**  e confirme que foram adicionadas seis novas perguntas e respostas. Em seguida, clique em  **Salvar e Retreinar**  para salvar as alterações.
 
     ![The updated knowledge base](images/qna-updated-kb-01.png)
 _A base de conhecimento atualizada_
@@ -222,7 +221,7 @@ _Testando a base de conhecimento atualizada_
 _Substituindo a base de conhecimento_
 
 1. Navegue para os recursos que acompanham este laboratório e selecione o arquivo de texto chamado  **QnA.txt final**. Clique em  **OK**  quando solicitado a confirmar que importar este arquivo substituirá as perguntas e respostas existentes.
-1. Clique em  **Base de Conhecimento**  e confirme que 14 novas perguntas e respostas aparecem na base de conhecimento. (Os seis que você importou do URL ainda estão lá, apesar de terem sido avisados ​​de que eles seriam substituídos.) Em seguida, clique em  **Salvar e Armazenar**  para salvar as alterações.
+1. Clique em  **Base de Conhecimento**  e confirme que 14 novas perguntas e respostas aparecem na base de conhecimento. (Os seis que você importou do URL ainda estão lá, apesar de terem sido avisados ​​de que eles seriam substituídos.) Em seguida, clique em  **Salvar e Retreinar**  para salvar as alterações.
 
     ![The updated knowledge base](images/qna-updated-kb-02.png)
 _A base de conhecimento atualizada_
@@ -232,7 +231,7 @@ _A base de conhecimento atualizada_
     ![Chatting with the bot](images/qna-test-book.png)
 _Conversando com o bot_
 
-1. A base de conhecimento agora contém 20 perguntas e respostas, mas um caractere inválido está presente na resposta na linha 7. Para remover o caractere, clique em  **Base de Conhecimento**  para retornar à página da Base de Conhecimento. Localize o caractere inválido na linha 7 entre as palavras &quot;most&quot; e &quot;Emmys&quot;, e substitua-o por um espaço. Em seguida, clique em  **Salvar e Armazenar**.
+1. A base de conhecimento agora contém 20 perguntas e respostas, mas um caractere inválido está presente na resposta na linha 7. Para remover o caractere, clique em  **Base de Conhecimento**  para retornar à página da Base de Conhecimento. Localize o caractere inválido na linha 7 entre as palavras &quot;most&quot; e &quot;Emmys&quot;, e substitua-o por um espaço. Em seguida, clique em  **Salvar e Retreinar**.
 
     ![Editing answer #7](images/qna-invalid-char.png)
 _Editando a resposta #7_
@@ -253,9 +252,9 @@ Com uma amostra de base de conhecimento implantada, agora é hora de prestar ate
 <a name="Exercise4"></a>
 ## Exercício 4: Implante o bot e configure a integração contínua ##
 
-Quando você implantou um Serviço de Bot no  [Exercício 1](https://github.com/CommunityBootcamp/Maratona-BOTs/blob/master/Desenvolvendo%20Bots%20inteligentes%20com%20o%20Microsoft%20Bot%20Framework.md#Exercise1), um aplicativo da Web Azure foi criado para hospedar o bot. Mas o bot ainda precisa ser escrito e implantado no Azure Web App. Neste exercício, você codificará o bot usando o código-fonte gerado para você pelo QnA Maker. Em seguida, você criará um repositório Git local para o código, conectá-lo-á ao aplicativo Azure Web e publicará o bot para o Azure, todos usando o Visual Studio Code.
+Quando você implantou um Serviço de Bot no  [Exercício 1](https://github.com/CommunityBootcamp/Maratona-BOTs/blob/master/Desenvolvendo%20Bots%20inteligentes%20com%20o%20Microsoft%20Bot%20Framework.md#Exercise1), um aplicativo da Web Azure foi criado para hospedar o bot. Mas o bot ainda precisa ser escrito e implantado no Azure Web App. Neste exercício, você codificará o bot usando o código-fonte gerado para você pelo QnA Maker. Em seguida, você criará um repositório Git local para o código, conectá-lo-á ao aplicativo Azure Web e publicará o bot para o Azure, tudo isso usando o Visual Studio Code.
 
-1. Se você não instalou o Visual Studio Code, tome um momento para fazê-lo agora. Você pode baixar o Visual Studio Code de  [http://code.visualstudio.com](http://code.visualstudio.com/) . Você também deve instalar [Node.js](https://nodejs.org/) e  [Git Client](https://git-scm.com/downloads) se eles ainda não estiverem instalados. Todos esses produtos funcionam cross-platform e podem ser instalados no Windows, MacOS ou Linux.
+1. Se você não instalou o Visual Studio Code, tome um momento para fazê-lo agora. Você pode baixar o Visual Studio Code de  [http://code.visualstudio.com](http://code.visualstudio.com/) . Você também deve instalar [Node.js](https://nodejs.org/) e  [Git Client](https://git-scm.com/downloads) se eles ainda não estiverem instalados. Todos esses produtos funcionam cross-platform e podem ser instalados no Windows, Mac OS ou Linux.
 
 Uma maneira fácil de determinar se o Node.js está instalado é abrir uma janela de terminal ou janela do prompt de comando e executar um comando  **node -v**. Se o número de versão Node.js for exibido, Node.js está instalado.
 
