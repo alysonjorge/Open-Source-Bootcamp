@@ -142,17 +142,17 @@ Observe como podemos usar o `IncidentTypes` enum e a propriedade booleana `Emerg
 
 1. A URL do endpoint deve ser o endereço do seu bot seguido por `/api/messages`. Deve ser semelhante a `http://localhost:3979/api/messages`. Visto que faremos uma depuração local, você pode ignorar as caixas de texto `Microsoft App ID`, `Microsoft App Passworde` e `Locale` e bastando clicar no botão `CONNECT`.
 
-    ![image](./media/2017-07-11_16_04_00.png)
+    ![image](./images/2017-07-11_16_04_00.png)
 
 1. A seção `Log` no canto inferior direito informará você, que você agora está conectado ao seu bot.
 
 1. Digite qualquer texto na janela de mensagem para iniciar a caixa de diálogo com o seu bot. Em seguida, começará a solicitar detalhes de incidentes.
 
-    ![image](./media/2017-07-11_15_59_00.png)
+    ![image](./images/2017-07-11_15_59_00.png)
 
 1. Durante a sua interação que você pode usar palavras de comando como `back`, `quit`, `reset`, `status` e `help`.
 
-    ![image](./media/2017-07-11_16_01_00.png)
+    ![image](./images/2017-07-11_16_01_00.png)
 
 Você já criou um bot simples que reúne todos os dados que precisamos para um relatório de incidente do usuário usando o template  [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow), que faz a maior parte do trabalho para você. Em seguida, você estenderá o bot para também aceitar uma imagem para o relatório.
 
@@ -232,11 +232,11 @@ O código armazenará a última imagem enviada nas variáveis ​​a serem usad
 
 1. Aperte `F5` para iniciar o processo de depuração e falar com o seu bot através do `Bot Framework Emulator`. Observe que o bot está informando sobre sua nova capacidade. Durante a interação, clique no botão da imagem e mande uma imagem da sua máquina. O bot confirmará que &quot;obteve sua imagem&quot;.
 
-    ![image](./media/2017-07-11_16_07_00.png)
+    ![image](./images/2017-07-11_16_07_00.png)
 
     A pasta DevCamp contém muitas imagens que você pode usar para testar o recurso.
 
-    ![image](./media/2017-07-11_16_08_00.png)
+    ![image](./images/2017-07-11_16_08_00.png)
 
 Enviar a imagem não afetará o resto da sua conversa com o bot.
 
@@ -284,15 +284,15 @@ Para arquivar o incidente informado, usamos a API de incidente. Os métodos nece
 1. Aperte `F5` para iniciar o processo de depuração e falar com o seu bot através do `Bot Framework Emulator`.
 1. Responda todas as perguntas do bot e confirme que deseja enviar o relatório do incidente.
 
-    ![image](./media/2017-07-11_16_10_00.png)
+    ![image](./images/2017-07-11_16_10_00.png)
 
 1. Em outra aba do navegador, abra o Painel do site do City Power que você implantou nos HoL anteriores para verificar se seu novo incidente foi registrado. Você também pode executar uma cópia local do seu código de outra instância do Visual Studio para executar o site do City Power.
 
-    ![image](./media/2017-07-11_16_13_00.png)
+    ![image](./images/2017-07-11_16_13_00.png)
 
 1. Use o Azure Storage Explorer como fez no  [HOL 2 exercício 3](ex3) para verificar se a imagem que você anexou foi carregada no armazenamento blob. Você pode clicar duas vezes na imagem para abri-la em uma nova janela.
 
-    ![image](./media/2017-07-11_16_14_00.png)
+    ![image](./images/2017-07-11_16_14_00.png)
 
 Seu bot está pronto. Ele reúne e faz upload de dados para criar um novo relatório de incidente. Em seguida, você irá implantá-lo no Azure para torná-lo globalmente acessível.
 
@@ -302,35 +302,35 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
 
 1. Se o seu bot ainda estiver em execução, pare-o. No Solution Explorer, clique com o botão direito do mouse no projeto `CityPowerBot` e selecione `Publish`. Isso inicia o assistente de publicação do Microsoft Azure.
 
-    ![image](./media/2017-07-12_12_33_00.png)
+    ![image](./images/2017-07-12_12_33_00.png)
 
 1. Selecione o `Microsoft Azure App Service` que abrirá a caixa de diálogo Serviço do aplicativo.
 
-    ![image](./media/2017-07-12_12_39_00.png)
+    ![image](./images/2017-07-12_12_39_00.png)
 
 1. Selecione o grupo `DevCamp` de recursos e clique em `New...`.
 
-    ![image](./media/2017-07-12_12_36_00.png)
+    ![image](./images/2017-07-12_12_36_00.png)
 
 1. Aceite os padrões e clique `Create`.
 
-    ![image](./media/2017-07-12_12_42_00.png)
+    ![image](./images/2017-07-12_12_42_00.png)
 
 1. Observe o valor `Destination URL` (você precisará desse valor mais tarde para testar a conexão com o bot) e, em seguida, clique `Validat` e `Connection` para verificar se as configurações foram configuradas corretamente. Se a validação for bem-sucedida, clique em `Next`.
 
-    ![image](./media/2017-07-12_12_49_00.png)
+    ![image](./images/2017-07-12_12_49_00.png)
 
 1. Por padrão, seu bot será publicado em uma configuração `Release`. (Se quiser depurar o seu bot, mude `Configuration` para `Debug`). Clique em `Publish` para publicar o seu bot para o Microsoft Azure.
 
-    ![image](./media/2017-07-12_12_55_00.png)
+    ![image](./images/2017-07-12_12_55_00.png)
 
 1. Abra um navegador e navegue até o  [Portal](https://dev.botframework.com/bots) do  [Bot Framework](https://dev.botframework.com/bots) . Depois de iniciar sessão, clique em `Create`:
 
-    ![image](./media/2017-11-02_09_56_00.png)
+    ![image](./images/2017-11-02_09_56_00.png)
 
 1. Na caixa de diálogo, selecione `Register an existing bot using Bot Builder SDK` e clique em `Ok`:
 
-    ![image](./media/2017-11-02_09_58_00.png)
+    ![image](./images/2017-11-02_09_58_00.png)
 
     **Complete a seção de perfil do formulário do formulário.**
 
@@ -343,7 +343,7 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
 
     1. Forneça o ponto de extremidade de mensagens HTTPS do seu bot. Este é o ponto final onde o seu bot receberá mensagens POST HTTP do Conector de Bot. Use o que `Destination URL` que você anotou anteriormente e adicione `https` e `/api/messages`. Deve ficar semelhante a: `https://citypowerbot20170712104041.azurewebsites.net/api/messages`.
 
-        ![image](./media/2017-07-12_13_17_00.png)
+        ![image](./images/2017-07-12_13_17_00.png)
 
     1. Clique em `Create Microsoft App ID and password`.
         * Armazene o ID do aplicativo.
@@ -352,7 +352,7 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
         * Clique em `Finish and go back to Bot Framework`.
         * De volta ao Portal do Bot Framework, o campo `App ID` já deve estar preenchido.
 
-        ![image](./media/2017-07-12_13_26_00.png)
+        ![image](./images/2017-07-12_13_26_00.png)
 
     **Complete a seção Admin do formulário.**
 
@@ -362,7 +362,7 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
 
     1. Clique em `Register` para completar o processo de registro.
 
-        ![image](./media/2017-07-12_13_29_00.png)
+        ![image](./images/2017-07-12_13_29_00.png)
 
 1. No Visual Studio, abra o `CityPowerBot` -> `web.config` e insira os valores que você acabou de reunir para o `BotId` (o bot `Handle` que você digitou durante o processo de registro) `MicrosoftAppId` e `MicrosoftAppPassword` na seção `appSettings`.
 
@@ -377,19 +377,19 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
 
 1. No Solution Explorer, clique com o botão direito do mouse no projeto `CityPowerBot` e clique em `Publish`. Isso inicia o assistente de publicação do Microsoft Azure. Clique em `Publish` para publicar as alterações.
 
-    ![image](./media/2017-07-12_12_33_00.png)
+    ![image](./images/2017-07-12_12_33_00.png)
 
 1. Teste a implantação do seu bot usando o `Bot Framework Emulator`. Você precisa configurar o `ngrok` para se conectar ao seu bot hoespedado no Azure. Clique nos três pontos e selecione `App Settings` para abrir a caixa de diálogo de configurações.
 
-    ![image](./media/2017-11-02_10_12_00.png)
+    ![image](./images/2017-11-02_10_12_00.png)
 
 1. Na caixa de diálogo, selecione o arquivo `ngrok.exe` que você extraiu no seu desktop no primeiro exercício, verimarque a opção `Use version 1.0 authentication tokens` e clique `SAVE` para fechar a caixa de diálogo.
 
-    ![image](./media/2017-07-12_13_47_00.png)
+    ![image](./images/2017-07-12_13_47_00.png)
 
 1. Digite o endpoint HTTPS do bot na barra de endereços do Emulador. Ele deve ser semelhante a este: `https://citypowerbot20170712104041.azurewebsites.net/api/messages`. Também forneça o `Microsoft App ID` e o `Microsoft App Password` que você marcou anteriormente. Em seguida, clique em `CONNECT`. Teste o seu bot como anteriormente.
 
-    ![image](./media/2017-07-12_13_46_00.png)
+    ![image](./images/2017-07-12_13_46_00.png)
 
     > Se você receber uma mensagem de erro 500 do servidor, tente remover o `Microsoft App ID` e o `Microsoft App Password` e reconecte-se ao bot.
 
@@ -403,23 +403,23 @@ Você já viu alguns dos fundamentos do desenvolvimento do bot. Nos exercícios,
 
 1. Para criar um bot usando o Serviço Azure Bot, navegue até o grupo de recursos `DevCamp` e clique em `Add`. Digite `Bot Service` na caixa do filtro, depois selecione `Bot Service (Preview)` e clique em `Create` na lâmina de detalhes.
 
-    ![image](./media/2017-07-11_16_31_00.png)
+    ![image](./images/2017-07-11_16_31_00.png)
 
 1. Digite um nome para o seu bot e clique Create
 
-    ![image](./media/2017-07-11_16_37_00.png)
+    ![image](./images/2017-07-11_16_37_00.png)
 
 1. Navegue até o bot no seu grupo de recursos. Você será redirecionado para a lâmina do template. Agora, você pode selecionar sua linguagem de programação preferida e o template que deseja usar para o seu bot. Escolha `Form` para terminar com um bot que é novamente baseado no template  [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) e clique em `Next`.
 
-    ![image](./media/2017-07-11_16_41_00.png)
+    ![image](./images/2017-07-11_16_41_00.png)
 
 1. Clique `Manage Microsoft App ID and password` e crie um novo id para o seu bot. Copie o Id do aplicativo e a senha para a lâmina do template, verifique e aceite os Termos de Uso e clique em `Create bot`.
 
-    ![image](./media/2017-07-11_16_28_00.png)
+    ![image](./images/2017-07-11_16_28_00.png)
 
 1. A implantação levará alguns minutos.
 
-    ![image](./media/2017-07-11_16_42_00.png)
+    ![image](./images/2017-07-11_16_42_00.png)
 
 1. Você pode encontrar mais informações sobre os modelos e sua aplicação  [aqui](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview) .
 1. Agora você pode desenvolver e testar seu bot diretamente no Portal Azure, mas deve configurar a integração contínua para poder adicionar arquivos adicionais. Se você fizer alterações no código, talvez seja necessário atualizar a página para a seção de teste para mostrar as mudanças. Seu novo bot também está disponível através do  [Portal](https://dev.botframework.com/bots) do  [Bot Framework](https://dev.botframework.com/bots) . Você pode usar uma segunda janela do navegador para testar o bot no Portal do Bot Framework.
@@ -427,23 +427,23 @@ Você já viu alguns dos fundamentos do desenvolvimento do bot. Nos exercícios,
 
     1. Executar `dotnet restore` na mesma pasta.
 
-        ![image](./media/2017-07-12_09_41_00.png)
+        ![image](./images/2017-07-12_09_41_00.png)
 
     1. Siga o guia e instale o [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli) .
 
-        ![image](./media/2017-07-12_09_42_00.png)
+        ![image](./images/2017-07-12_09_42_00.png)
 
     1. E também  [DotNet CLI](https://github.com/dotnet/cli) .
 
-        ![image](./media/2017-07-12_09_45_00.png)
+        ![image](./images/2017-07-12_09_45_00.png)
 
     1. E, finalmente, o  [comando Task Runner Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/e6bf6a3d-7411-4494-8a1e-28c1a8c4ce99) .
 
-        ![image](./media/2017-07-12_09_45_30.png)
+        ![image](./images/2017-07-12_09_45_30.png)
 
     1. Agora, inicie o Visual Studio e adicione a referência `, "Microsoft.Bot.Connector": "1.1.0"`ao arquivo `project.json`
 
-        ![image](./media/2017-07-12_10_20_00.png)
+        ![image](./images/2017-07-12_10_20_00.png)
 
     1. Seu código de bot de baixado criado pelo serviço Azure Bot deve agora compilar e você também pode usar o `Bot Framework Emulator` para depurá-lo localmente.
 
