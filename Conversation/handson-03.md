@@ -1,18 +1,18 @@
 # Hands-on Lab #3 - C#, Bot Service e LUIS #
 
-Nesse Hands-on Lab, criaremos um bot usando o serviço Azure Bot que usa o Language Understanding (LUIS) para entender o usuário. Ao criar um bot usando linguagem natural, o bot determina o que um usuário quer fazer identificando sua intenção. Essa intenção é determinada a partir de entradas faladas ou textuais, ou enunciados, que por sua vez podem ser mapeados para ações que os programadores do Bot codificaram. Por exemplo, um bot de tomada de notas reconhece uma intenção Notes.Create para invocar a funcionalidade para criar uma nota. Um bot também pode precisar extrair entidades, que são palavras importantes em expressões. No exemplo de um bot de tom de notas, Notes. A entidade do título identifica o título de cada nota.
+Nesse Hands-on Lab, criaremos um bot usando o Azure Bot Service, que usa o Language Understanding (LUIS) para entender o usuário. Ao criar um bot usando linguagem natural, o bot determina o que um usuário quer fazer identificando sua intenção (Intent). Essa intenção é determinada a partir de entradas faladas ou textuais, que por sua vez podem ser mapeados para ações que os determinadas no código fonte do Bot. Por exemplo, um bot de tomada de notas reconhece a intenção Notes.Create para invocar a funcionalidade para criar uma nota. Um bot também pode precisar extrair entidades (Entities), que são palavras importantes em expressões. Nesse exemplo do bot de tomada de notas, a entidade do título (Notes.title) identifica o título de cada nota.
 
 ## Criar um bot com reconhecimento de fala com o Bot Service ##
 
 Para criar o seu bot; Faça login no portal Azure, selecione  **Criar novo recurso**  na barra de menu e selecione  **AI + Serviços Cognitivos**.
 
-![img](images/00.png)
+  ![img](images/00.png)
 
 Você pode navegar pelas sugestões ou procurar por **Web App Bot.**
 
-![img](images/01.png)
+  ![img](images/01.png)
 
-Uma vez selecionada, a lâmina do Serviço Bot deve aparecer; que será familiar para os usuários dos serviços Azure. Para aqueles que não são, aqui você pode especificar informações sobre o seu serviço para o Bot Service usar na criação do seu bot, como onde ele vai residir, qual a assinatura e assim por diante. Na  **barra de serviço**  do  **Bot** , forneça as informações necessárias e clique em  **Criar**. Isso cria e implanta o Bot Service e o aplicativo LUIS para o Azure. Alguns campos interessantes:
+Uma vez selecionada, a tela do Serviço Bot deve aparecer; que será familiar para os usuários dos serviços Azure. Para aqueles que não são, aqui você pode especificar informações sobre o seu serviço para o Bot Service usar na criação do seu bot, como onde ele vai ser hospedado, qual a assinatura e assim por diante. Na  **barra de serviço**  do  **Bot** , forneça as informações necessárias e clique em  **Criar**. Isso cria e implanta o Bot Service e o aplicativo LUIS no Azure. Alguns campos interessantes:
 
 - Defina o  **nome da aplicação**  para o  **nome**  do seu bot. O nome é usado como subdomínio quando o seu bot é implantado na nuvem (por exemplo, mynotesbot.azurewebsites.net). Este nome também é usado como o nome do aplicativo LUIS associado ao seu bot. Copie-o para usar mais tarde, para encontrar o aplicativo LUIS associado ao bot.
 
@@ -21,7 +21,7 @@ Uma vez selecionada, a lâmina do Serviço Bot deve aparecer; que será familiar
 - Para essa demo, selecione o template **Language understanding (C#)** no campo do  **Bot**   **Template**.
 - Para o ultimo campo obrigatório, escolha o  **Azure Storage**  onde você deseja armazenar o estado de conversação do seu bot. Pense nisso como onde o bot armazena o status da conversa de cada usuário.
 
-![img](images/02.png)
+  ![img](images/02.png)
 
 Agora que você está pronto, você pode clicar em  **Create**. O Azure definirá a criação do seu bot, incluindo os recursos necessários para sua operação e uma conta LUIS para hospedar seu modelo de linguagem natural. Uma vez concluído, você receberá uma notificação através do sino no canto superior direito do portal Azure.
 
@@ -136,15 +136,15 @@ namespace Microsoft.Bot.Sample.LuisBot
 }
 ```
 
-## Crie uma classe para armazenar Notes ##
+## Crie uma classe para armazenar as notas (Notes) ##
 
-No editor de código, abra `BasicLuisDialog.cs`. Ele contém o código para lidar com Cancelar, Cumprimento, Ajuda e Nenhum intenta com o aplicativo LUIS.
+No editor de código, abra `BasicLuisDialog.cs`. Ele contém o código para lidar com as intenções Cancel, Greeting, Help e None no Luis.
 
-Adicione a seguinte declaração:
+Adicione a seguinte declaração no inicio do arquivo:
 
 ```using System.Collections.Generic;```
 
-Adicione o seguinte após o construtor BasicLuisDialog:
+Adicione o seguinte código após o construtor BasicLuisDialog:
 
 ```cs
 
@@ -191,7 +191,7 @@ Adicione o seguinte após o construtor BasicLuisDialog:
 
 ## Manipular a intenção Note.Create ##
 
-Note.Create intenção, adicione o seguinte código à classe BasicLuisDialog.
+Para manipular a intenção Note.Create, adicione o seguinte código à classe `BasicLuisDialog`
 
 ```cs
 
@@ -254,9 +254,10 @@ Note.Create intenção, adicione o seguinte código à classe BasicLuisDialog.
         }
 
 ```
+
 ## Manipular a intenção Note.ReadAloud ##
 
-O bot pode usar a intenção Note.ReadAloud para mostrar o conteúdo de uma nota ou de todas as notas se o título da nota não for detectado. Cole o seguinte código na classe BasicLuisDialog.
+O bot pode usar a intenção Note.ReadAloud para mostrar o conteúdo de uma nota ou de todas as notas se o título da nota não for detectado no texto digitado. Cole o seguinte código na classe `BasicLuisDialog` para obter essa funcionalidade.
 
 ```cs
 
@@ -310,9 +311,9 @@ O bot pode usar a intenção Note.ReadAloud para mostrar o conteúdo de uma nota
 
 ```
 
-## Handle the Note.Delete intent ##
+## Gerenciar a intenção Note.Delete ##
 
-Paste the following code into the `BasicLuisDialog` class.
+Para a funcionalidade de exclusão de notas, cole o seguinte código na classe `BasicLuisDialog`.
 
 ```cs
 
@@ -355,15 +356,15 @@ Paste the following code into the `BasicLuisDialog` class.
 
 ## Construa o bot ##
 
-Agora que a parte cortar e colar é feita, você pode clicar com o botão direito do mouse em build.cmd no editor de código e escolher Executar **a partir do Console**. Seu bot será construído e implantado a partir do ambiente de editor de código on-line.
+Agora que a parte copiar e colar foi finalizada, você pode clicar com o botão direito do mouse em `build.cmd` no editor de código e escolher **Executar no Console**. Seu bot será construído e implantado a partir do ambiente de editor de código on-line.
 
 ## Teste o bot ##
 
-No Portal Azure, clique em Testar **no Chat da Web**  para testar o bot. Tente digitar mensagens como &quot;Criar uma nota&quot;, &quot;ler minhas anotações&quot; e &quot;apagar notas&quot;. Como você está usando linguagem natural, você tem mais flexibilidade sobre como você declara seu pedido e, por sua vez, o recurso Active Learning da LUIS pode ser usado de tal forma que você pode abrir seu aplicativo LUIS e pode fazer sugestões sobre coisas que você disse, T entendo e pode tornar seu aplicativo mais eficaz.
+No Portal Azure, clique em Testar **no Chat da Web**  para testar o bot. Tente digitar mensagens como &quot;Create note&quot;, &quot;Read my notes&quot; e &quot;Delete notes&quot;. Como você está usando linguagem natural, você tem mais flexibilidade sobre como você declara seu pedido e, por sua vez, o recurso Active Learning da LUIS pode ser usado de tal forma que você pode abrir seu aplicativo LUIS e pode fazer sugestões sobre coisas que você disse, e pode tornar seu aplicativo mais eficaz.
 
 ![img](images/05.png)
 
-Dica: se você achar que seu bot nem sempre reconhece a intenção ou as entidades corretas, melhore o desempenho do seu aplicativo LUIS, dando mais exemplos de enunciados para treiná-lo. Você pode redigir seu aplicativo LUIS sem qualquer modificação no código do seu bot.
+Dica: se você achar que seu bot nem sempre reconhece a intenção ou as entidades corretas, melhore o desempenho do seu aplicativo LUIS, dando mais exemplos de enunciados para treiná-lo. Você pode alterar seu aplicativo LUIS sem qualquer modificação no código do seu bot.
 
 ## Tudo pronto (por hora) ##
 
