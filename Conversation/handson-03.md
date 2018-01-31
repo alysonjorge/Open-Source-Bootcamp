@@ -1,6 +1,6 @@
 # Hands-on Lab #3 - C#, Bot Service e LUIS #
 
-Nesta seção, criaremos um bot usando o serviço Azure Bot que usa o Language Understanding (LUIS) para entender o usuário. Ao criar um bot usando linguagem natural, o bot determina o que um usuário quer fazer identificando sua intenção. Essa intenção é determinada a partir de entradas faladas ou textuais, ou enunciados, que por sua vez podem ser mapeados para ações que os programadores do Bot codificaram. Por exemplo, um bot de tomada de notas reconhece uma intenção Notes.Create para invocar a funcionalidade para criar uma nota. Um bot também pode precisar extrair entidades, que são palavras importantes em expressões. No exemplo de um bot de tom de notas, Notes. A entidade do título identifica o título de cada nota.
+Nesse Hands-on Lab, criaremos um bot usando o serviço Azure Bot que usa o Language Understanding (LUIS) para entender o usuário. Ao criar um bot usando linguagem natural, o bot determina o que um usuário quer fazer identificando sua intenção. Essa intenção é determinada a partir de entradas faladas ou textuais, ou enunciados, que por sua vez podem ser mapeados para ações que os programadores do Bot codificaram. Por exemplo, um bot de tomada de notas reconhece uma intenção Notes.Create para invocar a funcionalidade para criar uma nota. Um bot também pode precisar extrair entidades, que são palavras importantes em expressões. No exemplo de um bot de tom de notas, Notes. A entidade do título identifica o título de cada nota.
 
 ## Criar um bot com reconhecimento de fala com o Bot Service ##
 
@@ -77,51 +77,115 @@ O Serviço Bot está configurado para funcionar em um ambiente de desenvolviment
 
 ![img](images/04.png)
 
-Primeiro, alguns preâmbulos. No editor de código, abra BasicLuisDialog.cs. Ele contém o código para lidar com Cancelar, Cumprimento, Ajuda e Nenhum intenta com o aplicativo LUIS.
+No editor de código, abra `BasicLuisDialog.cs`. Ele contém o seguinte código para manipular intenções do aplicativo LUIS.
+
+```cs
+using System;
+using System.Configuration;
+using System.Threading.Tasks;
+
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Luis;
+using Microsoft.Bot.Builder.Luis.Models;
+
+namespace Microsoft.Bot.Sample.LuisBot
+{
+    // For more information about this template visit http://aka.ms/azurebots-csharp-luis
+    [Serializable]
+    public class BasicLuisDialog : LuisDialog<object>
+    {
+        public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
+            ConfigurationManager.AppSettings["LuisAppId"], 
+            ConfigurationManager.AppSettings["LuisAPIKey"], 
+            domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
+        {
+        }
+
+        [LuisIntent("None")]
+        public async Task NoneIntent(IDialogContext context, LuisResult result)
+        {
+            await this.ShowLuisResult(context, result);
+        }
+
+        // Go to https://luis.ai and create a new intent, then train/publish your luis app.
+        // Finally replace "Greeting" with the name of your newly created intent in the following handler
+        [LuisIntent("Greeting")]
+        public async Task GreetingIntent(IDialogContext context, LuisResult result)
+        {
+            await this.ShowLuisResult(context, result);
+        }
+
+        [LuisIntent("Cancel")]
+        public async Task CancelIntent(IDialogContext context, LuisResult result)
+        {
+            await this.ShowLuisResult(context, result);
+        }
+
+        [LuisIntent("Help")]
+        public async Task HelpIntent(IDialogContext context, LuisResult result)
+        {
+            await this.ShowLuisResult(context, result);
+        }
+
+        private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
+        {
+            await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said: {result.Query}");
+            context.Wait(MessageReceived);
+        }
+    }
+}
+```
+
+## Crie uma classe para armazenar Notes ##
+
+No editor de código, abra `BasicLuisDialog.cs`. Ele contém o código para lidar com Cancelar, Cumprimento, Ajuda e Nenhum intenta com o aplicativo LUIS.
 
 Adicione a seguinte declaração:
 
 ```using System.Collections.Generic;```
 
-## Crie uma classe para armazenar Notes ##
-
 Adicione o seguinte após o construtor BasicLuisDialog:
 
-```csharp
+```cs
 
-private readonly Dictionary < string, Note > noteByTitle = new Dictionary < string, Note > ();
-private Note noteToCreate;
-private string currentTitle;
-// CONSTANTS
-// Name of note title entity
-public
-const string Entity_Note_Title = "Note.Title";
-// Default note title
-public
-const string DefaultNoteTitle = "default";
-[Serializable]
-public sealed class Note: IEquatable < Note > {
- public string Title {
-  get;
-  set;
- }
- public string Text {
-  get;
-  set;
- }
- public override string ToString() {
-  return $ "[{this.Title} : {this.Text}]";
- }
- public bool Equals(Note other) {
-  return other != null && this.Text == other.Text && this.Title == other.Title;
- }
- public override bool Equals(object other) {
-  return Equals(other as Note);
- }
- public override int GetHashCode() {
-  return this.Title.GetHashCode();
- }
-}
+        // Store notes in a dictionary that uses the title as a key
+        private readonly Dictionary<string, Note> noteByTitle = new Dictionary<string, Note>();
+
+        [Serializable]
+        public sealed class Note : IEquatable<Note>
+        {
+
+            public string Title { get; set; }
+            public string Text { get; set; }
+
+            public override string ToString()
+            {
+                return $"[{this.Title} : {this.Text}]";
+            }
+
+            public bool Equals(Note other)
+            {
+                return other != null
+                    && this.Text == other.Text
+                    && this.Title == other.Title;
+            }
+
+            public override bool Equals(object other)
+            {
+                return Equals(other as Note);
+            }
+
+            public override int GetHashCode()
+            {
+                return this.Title.GetHashCode();
+            }
+        }
+
+        // CONSTANTS
+        // Name of note title entity
+        public const string Entity_Note_Title = "Note.Title";
+        // Default note title
+        public const string DefaultNoteTitle = "default";
 
 ```
 
@@ -129,106 +193,163 @@ public sealed class Note: IEquatable < Note > {
 
 Note.Create intenção, adicione o seguinte código à classe BasicLuisDialog.
 
-```csharp
+```cs
 
-[LuisIntent("Note.Create")]
-public Task NoteCreateIntent(IDialogContext context, LuisResult result) {
- EntityRecommendation title;
- if (!result.TryFindEntity(Entity_Note_Title, out title)) {
-  // Prompt the user for a note title
-  PromptDialog.Text(context, After_TitlePrompt, "What is the title of the note you want to create?");
- } else {
-  var note = new Note() {
-   Title = title.Entity
-  };
-  noteToCreate = this.noteByTitle[note.Title] = note;
+        private Note noteToCreate;
+        private string currentTitle;
+        [LuisIntent("Note.Create")]
+        public Task NoteCreateIntent(IDialogContext context, LuisResult result)
+        {
+            EntityRecommendation title;
+            if (!result.TryFindEntity(Entity_Note_Title, out title))
+            {
+                // Prompt the user for a note title
+                PromptDialog.Text(context, After_TitlePrompt, "What is the title of the note you want to create?");
+            }
+            else
+            {
+                var note = new Note() { Title = title.Entity };
+                noteToCreate = this.noteByTitle[note.Title] = note;
 
-  // Prompt the user for what they want to say in the note
-  PromptDialog.Text(context, After_TextPrompt, "What do you want to say in your note?");
- }
- return Task.CompletedTask;
-}
+                // Prompt the user for what they want to say in the note
+                PromptDialog.Text(context, After_TextPrompt, "What do you want to say in your note?");
+            }
 
-private async Task After_TitlePrompt(IDialogContext context, IAwaitable < string > result) {
- EntityRecommendation title;
- // Set the title (used for creation, deletion, and reading)
- currentTitle = await result;
- if (currentTitle != null) {
-  title = new EntityRecommendation(type: Entity_Note_Title) {
-   Entity = currentTitle
-  };
- } else {
-  // Use the default note title
-  title = new EntityRecommendation(type: Entity_Note_Title) {
-   Entity = DefaultNoteTitle
-  };
- }
+            return Task.CompletedTask;
+        }
 
- // Create a new note object
- var note = new Note() {
-  Title = title.Entity
- };
- // Add the new note to the list of notes and also save it in order to add text to it later
- noteToCreate = this.noteByTitle[note.Title] = note;
+        private async Task After_TitlePrompt(IDialogContext context, IAwaitable<string> result)
+        {
+            EntityRecommendation title;
+            // Set the title (used for creation, deletion, and reading)
+            currentTitle = await result;
+            if (currentTitle != null)
+            {
+                title = new EntityRecommendation(type: Entity_Note_Title) { Entity = currentTitle };
+            }
+            else
+            {
+                // Use the default note title
+                title = new EntityRecommendation(type: Entity_Note_Title) { Entity = DefaultNoteTitle };
+            }
 
- // Prompt the user for what they want to say in the note
- PromptDialog.Text(context, After_TextPrompt, "What do you want to say in your note?");
-}
+            // Create a new note object 
+            var note = new Note() { Title = title.Entity };
+            // Add the new note to the list of notes and also save it in order to add text to it later
+            noteToCreate = this.noteByTitle[note.Title] = note;
 
-private async Task After_TextPrompt(IDialogContext context, IAwaitable < string > result) {
- // Set the text of the note
- noteToCreate.Text = await result;
+            // Prompt the user for what they want to say in the note
+            PromptDialog.Text(context, After_TextPrompt, "What do you want to say in your note?");
 
- await context.PostAsync($ "Created note **{this.noteToCreate.Title}** that says \"{this.noteToCreate.Text}\".");
- context.Wait(MessageReceived);
-}
+        }
+
+        private async Task After_TextPrompt(IDialogContext context, IAwaitable<string> result)
+        {
+            // Set the text of the note
+            noteToCreate.Text = await result;
+
+            await context.PostAsync($"Created note **{this.noteToCreate.Title}** that says \"{this.noteToCreate.Text}\".");
+
+            context.Wait(MessageReceived);
+        }
 
 ```
-
 ## Manipular a intenção Note.ReadAloud ##
 
 O bot pode usar a intenção Note.ReadAloud para mostrar o conteúdo de uma nota ou de todas as notas se o título da nota não for detectado. Cole o seguinte código na classe BasicLuisDialog.
 
-```csharp
+```cs
 
-[LuisIntent("Note.ReadAloud")]
-public async Task NoteReadAloudIntent(IDialogContext context, LuisResult result) {
- Note note;
- if (TryFindNote(result, out note)) {
-  await context.PostAsync($ "**{note.Title}**: {note.Text}.");
- } else {
-  // Print out all the notes if no specific note name was detected
-  string NoteList = "Here's the list of all notes: \n\n";
-  foreach(KeyValuePair < string, Note > entry in noteByTitle) {
-   Note noteInList = entry.Value;
-   NoteList += $ "**{noteInList.Title}**: {noteInList.Text}.\n\n";
-  }
-  await context.PostAsync(NoteList);
- }
- context.Wait(MessageReceived);
-}
+        [LuisIntent("Note.ReadAloud")]
+        public async Task NoteReadAloudIntent(IDialogContext context, LuisResult result)
+        {
+            Note note;
+            if (TryFindNote(result, out note))
+            {
+                await context.PostAsync($"**{note.Title}**: {note.Text}.");
+            }
+            else
+            {
+                // Print out all the notes if no specific note name was detected
+                string NoteList = "Here's the list of all notes: \n\n";
+                foreach (KeyValuePair<string, Note> entry in noteByTitle)
+                {
+                    Note noteInList = entry.Value;
+                    NoteList += $"**{noteInList.Title}**: {noteInList.Text}.\n\n";
+                }
+                await context.PostAsync(NoteList);
+            }
 
-public bool TryFindNote(string noteTitle, out Note note) {
- // TryGetValue returns false if no match is found.
- bool foundNote = this.noteByTitle.TryGetValue(noteTitle, out note);
- return foundNote;
-}
+            context.Wait(MessageReceived);
+        }
 
-public bool TryFindNote(LuisResult result, out Note note) {
- note = null;
+        public bool TryFindNote(string noteTitle, out Note note)
+        {
+            bool foundNote = this.noteByTitle.TryGetValue(noteTitle, out note); // TryGetValue returns false if no match is found.
+            return foundNote;
+        }
 
- string titleToFind;
+        public bool TryFindNote(LuisResult result, out Note note)
+        {
+            note = null;
 
- EntityRecommendation title;
- if (result.TryFindEntity(Entity_Note_Title, out title)) {
-  titleToFind = title.Entity;
- } else {
-  titleToFind = DefaultNoteTitle;
- }
+            string titleToFind;
 
- // TryGetValue returns false if no match is found.
- return this.noteByTitle.TryGetValue(titleToFind, out note);
-}
+            EntityRecommendation title;
+            if (result.TryFindEntity(Entity_Note_Title, out title))
+            {
+                titleToFind = title.Entity;
+            }
+            else
+            {
+                titleToFind = DefaultNoteTitle;
+            }
+
+            return this.noteByTitle.TryGetValue(titleToFind, out note); // TryGetValue returns false if no match is found.
+        }
+
+```
+
+## Handle the Note.Delete intent ##
+
+Paste the following code into the `BasicLuisDialog` class.
+
+```cs
+
+        [LuisIntent("Note.Delete")]
+        public async Task NoteDeleteIntent(IDialogContext context, LuisResult result)
+        {
+            Note note;
+            if (TryFindNote(result, out note))
+            {
+                this.noteByTitle.Remove(note.Title);
+                await context.PostAsync($"Note {note.Title} deleted");
+            }
+            else
+            {
+                // Prompt the user for a note title
+                PromptDialog.Text(context, After_DeleteTitlePrompt, "What is the title of the note you want to delete?");
+            }
+        }
+
+        private async Task After_DeleteTitlePrompt(IDialogContext context, IAwaitable<string> result)
+        {
+            Note note;
+            string titleToDelete = await result;
+            bool foundNote = this.noteByTitle.TryGetValue(titleToDelete, out note);
+
+            if (foundNote)
+            {
+                this.noteByTitle.Remove(note.Title);
+                await context.PostAsync($"Note {note.Title} deleted");
+            }
+            else
+            {
+                await context.PostAsync($"Did not find note named {titleToDelete}.");
+            }
+
+            context.Wait(MessageReceived);
+        }
 
 ```
 
