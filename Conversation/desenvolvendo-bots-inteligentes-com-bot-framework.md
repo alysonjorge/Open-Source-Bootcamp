@@ -73,31 +73,31 @@ O primeiro passo na criação de um bot é fornecer um local para hospedar o bot
 1. Abra o  [Portal Azure](https://portal.azure.com/) no seu navegador. Se você for solicitado a fazer login, faça isso usando sua conta Microsoft.
 1. Clique  **+ Novo** , seguido de  **Ai + Cognitive Services**  e, em seguida, **Web App Bot**.
 
-    ![Creating a new Azure Bot Service](images/new01.png)
+    ![Creating a new Azure Bot Service](images/new01.PNG)
 _Criando um serviço Azure Bot_
 
 1. Digite um nome como &quot;qnafactbot&quot; (sem aspas) na caixa  **Nome**  da  **aplicação**. Este nome deve ser exclusivo dentro de sua assinatura do Azure, portanto, verifique se uma marca de verificação verde aparece ao lado. Verifique se  **Criar novo**  está selecionado em  **Grupo de recursos**  e digite o nome do grupo de recursos &quot;BotsResourceGroup&quot; (novamente, sem aspas).
-    ![Creating a new Azure Bot Service](images/new02.png)
+    ![Creating a new Azure Bot Service](images/new02.PNG)
 _Criando um serviço Azure Bot_
 
 1. No campo **Bot Template**, selecione a linguagem de programação Node.js. Em seguida, selecione **Question and Answer** e clique em **Select**.
 
-    ![Creating a new Azure Bot Service](images/new02c.png)
+    ![Creating a new Azure Bot Service](images/new02c.PNG)
 _Criando um serviço Azure Bot_
 
 1. Retornando as configurações do seu **Web App Bot**, selecione um **Pricing Tier**, valide as informações do **Azure Storage** e ative o **Aplication Insigts** de acordo com sua necessidade. Selecione a localização mais próxima e clique em  **Criar**.
 
-    ![Configuring a new Azure Bot Service](images/new02b.png)
+    ![Configuring a new Azure Bot Service](images/new02b.PNG)
 _Configurando um novo serviço Azure Bot_
 
 1. Clique em  **Grupos de recursos**  na barra à esquerda, seguido de  **BotsResourceGroup**  para abrir o grupo de recursos criado para o Serviço Bot.
 
-    ![Opening the resource group](images/new03.png)
+    ![Opening the resource group](images/new03.PNG)
 _Abrindo o grupo de recursos_
 
 1. Aguarde até que &quot;Implantando&quot; vire &quot;Sucesso&quot; indicando que o Serviço Bot foi implantado com sucesso. Você pode clicar no botão  **Atualizar**  na parte superior da lâmina para atualizar o status da implantação.
 
-    ![Successful deployment](images/new04.png)
+    ![Successful deployment](images/new04.PNG)
 _Implementação bem-sucedida_
 
 1. Clique em  **qnafactbot**  (ou no nome que você digitou na Etapa 3) para abrir o Serviço de Aplicativos criado para o seu bot.
@@ -107,41 +107,41 @@ _Abrindo o Serviço Bot_
 
 1. Para obter o **Microsoft App ID** e **Password**, selecione a opção **Settings** na sessão **Bot Management**. Nessa tela, encontre o campo **Microsoft App ID** e clique no link **Manage**.
 
-    ![image](images/new05.png)
+    ![image](images/new05.PNG)
 
 1. Nessa página, é possível gerenciar o **Microsoft App ID** e gerar uma nova **Password**.
 
-    ![image](images/new06.png)
+    ![image](images/new06.PNG)
 
 1. Retorne ao Web App Bot criado anteriormente no portal do Azure, e selecione a opção **Test in Web Chat** para iniciarmos a conexão com o QnA Maker. Assim que o chat estiver disponível, digite "Hi". Seu bot deve responder com as instruções de configuração do QnA Maker.
 
-    ![image](images/new07.png)
+    ![image](images/new07.PNG)
 
 1. Abra a página do [QnA Maker](https://qnamaker.ai/), faça login com a sua conta Microsoft e permita que a aplicação acesse as informações de sua conta. Em seguida, leia os termos de uso do **Microsoft Cognitive Services** e a **Política de Privacidade da Microsoft**. Caso concorde, marque a caixa e clique em **Continue**.
 
-    ![image](images/new08.png)
+    ![image](images/new08.PNG)
 
 1. No menu superior, clique na opção **Create new Service**. Nessa tela, preencha somente a opção **Service Name** e clique em **Create**, no final da página.
 
-    ![image](images/new09.png)
+    ![image](images/new09.PNG)
 
 1. Após crirar a sua base de conhecimento, é necessário realizar uma publicação inicial, antes da conexão com o seu Web App Bot. Para isso, clique no botão **Publish** na página da sua base de conhecimento, e **Publish** novamente na página de confirmação. A seguinte página deve ser exibida em caso de sucesso.
 
-    ![image](images/new10b.png)
+    ![image](images/new10b.PNG)
 
 1. Agora, precisaremos copiar as informações **QnAKnowledgebaseId** e **QnASubscriptionKey** do QnA Maker para conctarmos com nosso Web App Bot. Assim que a Knowledge Base estiver pronta, é possível encontrar o **QnAKnowledgebaseId** na URL da página. Copie essa informação e armazene para uso posterior.
 
-    ![image](images/new10.png)
+    ![image](images/new10.PNG)
 
 1. Para encontrar o **QnASubscriptionKey**, selecione o seu usuário no canto superior direito da página, e clique na opção **Subscription keys**. Nessa tela, é possível copiar o **QnASubscriptionKey**. Copie essa informação e armazene para uso posterior.
 
-    ![image](images/new11.png)
+    ![image](images/new11.PNG)
 
 1. Com essas informações, retorne ao Web App Bot criado anteriormente no portal do Azure. No menu, selecione a opção **Application Settings** na categoria **App Service Settings**. Nesse passo, armazenaremos as informações copiadas anteriormente nas variáveis da aplicação Web. Para isso, encontre as variáveis **QnAKnowledgebaseId** e **QnASubscriptionKey** dentro de **App settings**. Cole as chaves em seus respectivos campos e clique em **Save**.
 
 1. Para garantir que esses serviços possam se comunicar entre si, você pode testar a comunicação do bot no editor do serviço Azure Bot. Selecione a opção Test in Web Chat para testarmos a conexão com o QnA Maker. Assim que o chat estiver disponível, digite "Hi". Seu bot deve responder com a "Hello", ou a mensagem apresentada na base de conhecimentos criada nos passos anteriores.
 
-    ![image](images/new13.png)
+    ![image](images/new13.PNG)
 
 Com o Bot Service implantado e configurado, o próximo passo é atualizar o serviço Microsoft QnA Maker ao qual o bot está conectado.
 
