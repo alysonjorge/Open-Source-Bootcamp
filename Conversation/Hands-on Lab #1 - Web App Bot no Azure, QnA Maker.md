@@ -2,7 +2,6 @@
 
 # Hands-on Lab #1 - Web App Bot no Azure, QnA Maker #
 
----
 <a name="Overview"></a>
 
 ### Visão geral ###
@@ -77,6 +76,7 @@ O primeiro passo na criação de um bot é fornecer um local para hospedar o bot
 _Criando um serviço Azure Bot_
 
 1. Digite um nome como &quot;qnafactbot&quot; (sem aspas) na caixa  **Nome**  da  **aplicação**. Este nome deve ser exclusivo dentro de sua assinatura do Azure, portanto, verifique se uma marca de verificação verde aparece ao lado. Verifique se  **Criar novo**  está selecionado em  **Grupo de recursos**  e digite o nome do grupo de recursos &quot;BotsResourceGroup&quot; (novamente, sem aspas).
+
     ![Creating a new Azure Bot Service](images/new02.PNG)
 _Criando um serviço Azure Bot_
 
@@ -191,7 +191,6 @@ _Conversando com o bot_
 
 Este é um excelente começo, mas uma resposta simples à saudação &quot;Hi&quot; não demonstra muito valor. Para dar ao seu bot um conteúdo significativo para trabalhar, o próximo passo é preencher a base de conhecimento com perguntas e respostas adicionais.
 
-
 <a name="Exercise3"></a>
 
 ## Exercício 3: Expanda a base de conhecimento do QnA Maker ##
@@ -254,7 +253,6 @@ _Publicando a base de conhecimento_
 _Revisando mudanças_
 
 Com uma amostra de base de conhecimento implantada, agora é hora de prestar atenção ao próprio bot.
-
 
 <a name="Exercise4"></a>
 
@@ -352,7 +350,6 @@ _Inserindo as credenciais de implantação_
 _O indicador de publicação Git_
 
 Neste exercício, você criou um projeto para o seu bot no Visual Studio Code e configurou a integração contínua usando o Git para simplificar as mudanças de código de publicação. Seu bot foi publicado para o Azure e é hora de vê-lo em ação e aprender a depurá-lo no Visual Studio Code.
-
 
 <a name="Exercise5"></a>
 
@@ -462,7 +459,6 @@ _Uma conversa guiada de bot_
 1. Clique no botão  **Parar**  na barra de depuração do Visual Studio Code para finalizar a sessão de depuração.
 
 Neste ponto, você tem um bot totalmente funcional e sabe como depurá-lo, iniciando-o no depurador no Visual Studio Code e conectando-se à sessão de depuração do Microsoft Bot Emulator. O próximo passo é tornar o bot mais inteligente ao conectá-lo à base de conhecimento que você implantou em [Exercício 3](https://github.com/CommunityBootcamp/Maratona-BOTs/blob/master/Desenvolvendo%20Bots%20inteligentes%20com%20o%20Microsoft%20Bot%20Framework.md#Exercise3).
-
 
 <a name="Exercise6"></a>
 
@@ -641,6 +637,6 @@ Neste laboratório prático, você aprendeu a:
 - Publicar bots e usar a integração contínua para mantê-los atualizados
 - Conectar um bot no Skype e interajir com ele lá
 
-Há muito mais que você pode fazer para aproveitar o poder do Microsoft Bot Framework incorporando  [diálogos](http://aihelpwebsite.com/Blog/EntryId/9/Introduction-To-Using-Dialogs-With-The-Microsoft-Bot-Framework) ,  [FormFlow](https://blogs.msdn.microsoft.com/uk_faculty_connection/2016/07/14/building-a-microsoft-bot-using-microsoft-bot-framework-using-formflow/) e  [Microsoft Language Understanding e Intelligence Services (LUIS)](https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/) . Com estes e outros recursos, você pode criar bots sofisticados que respondem às consultas e comandos dos usuários e interagem de forma fluida, conversacional e não-linear. Para obter mais informações, consulte  [https://blogs.msdn.microsoft.com/pt\_faculty\_connection/2016/04/05/what-is-microsoft-bot-framework-overview/](https://blogs.msdn.microsoft.com/uk_faculty_connection/2016/04/05/what-is-microsoft-bot-framework-overview/) .
+Há muito mais que você pode fazer para aproveitar o poder do Microsoft Bot Framework incorporando  [diálogos](http://aihelpwebsite.com/Blog/EntryId/9/Introduction-To-Using-Dialogs-With-The-Microsoft-Bot-Framework),  [FormFlow](https://blogs.msdn.microsoft.com/uk_faculty_connection/2016/07/14/building-a-microsoft-bot-using-microsoft-bot-framework-using-formflow/) e  [Microsoft Language Understanding e Intelligence Services (LUIS)](https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/). Com estes e outros recursos, você pode criar bots sofisticados que respondem às consultas e comandos dos usuários e interagem de forma fluida, conversacional e não-linear. Para obter mais informações, consulte [https://blogs.msdn.microsoft.com/pt\_faculty\_connection/2016/04/05/what-is-microsoft-bot-framework-overview/](https://blogs.msdn.microsoft.com/uk_faculty_connection/2016/04/05/what-is-microsoft-bot-framework-overview/).
 
-Copyright 2016 Microsoft Corporation. Todos os direitos reservados. Exceto quando indicado de outra forma, esses materiais são licenciados sob os termos da Licença Apache, Versão 2.0. Você pode usá-lo de acordo com a licença, conforme apropriado para o seu projeto caso a caso. Os termos desta licença podem ser encontrados em  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0) .
+Copyright 2016 Microsoft Corporation. Todos os direitos reservados. Exceto quando indicado de outra forma, esses materiais são licenciados sob os termos da Licença Apache, Versão 2.0. Você pode usá-lo de acordo com a licença, conforme apropriado para o seu projeto caso a caso. Os termos desta licença podem ser encontrados em  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).

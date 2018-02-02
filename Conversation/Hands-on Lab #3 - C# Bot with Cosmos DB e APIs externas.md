@@ -1,6 +1,6 @@
 # Hands-on Lab #3 - C# Bot with Cosmos DB e APIs externas #
 
-## Visão geral
+## Visão geral ##
 
 City Power &amp; Light é um exemplo de aplicação que permite aos cidadãos denunciar &quot;incidentes&quot; que ocorreram em sua comunidade. Inclui uma tela inicial, um painel de controle e um formulário para relatar novos incidentes com uma foto opcional. O aplicativo é implementado com vários componentes:
 
@@ -10,9 +10,9 @@ City Power &amp; Light é um exemplo de aplicação que permite aos cidadãos de
 
 Neste laboratório, você continuará aprimorando a experiência geral da City Power &amp; Light criando um relatório de incidentes a partir do zero e através do serviço Azure Bot e hospedá-lo no Azure. O bot poderá reunir dados de um usuário com uma foto opcional e enviá-lo para o WebAPI.
 
-> *** O desenvolvimento de bots atualmente é suportado apenas em C# e NodeJS. Neste exercício, demonstraremos principalmente a criação e implantação de bots que é independente da linguagem de programação usada e de diferentes recursos de bot. O bot na verdade será criado pelo uso extensivo do modelo [FormFlow] (https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) em C#. As alterações ao código são mínimas e não requerem a compreensão real da linguagem C#. É importante ver como o template é aplicado. ***
+> *** O desenvolvimento de bots atualmente é suportado apenas em C# e NodeJS. Neste exercício, demonstraremos principalmente a criação e implantação de bots que é independente da linguagem de programação usada e de diferentes recursos de bot. O bot na verdade será criado pelo uso extensivo do modelo [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) em C#. As alterações ao código são mínimas e não requerem a compreensão real da linguagem C#. É importante ver como o template é aplicado. ***
 
-## Objetivos
+## Objetivos ##
 
 Neste laboratório prático, você aprenderá como:
 
@@ -21,14 +21,14 @@ Neste laboratório prático, você aprenderá como:
 * Criar seu próprio bot usando o serviço Azure Bot.
 * Hospedandar seu bot em Azure.
 
-## Pré-requisitos
+## Pré-requisitos ##
 
 * O código fonte do aplicativo inicial está localizada na pasta [inicial](https://github.com/AzureCAT-GSI/DevCamp/blob/master/HOL/dotnet/07-bot/start).
 * O projeto concluído está localizado na pasta [final](https://github.com/AzureCAT-GSI/DevCamp/blob/master/HOL/dotnet/07-bot/end).
 * Projeto inicial ARM Template implantado [HOL 1](https://github.com/AzureCAT-GSI/DevCamp/blob/master/HOL/dotnet/01-developer-environment).
 * Conclusão do [HOL 5](https://github.com/AzureCAT-GSI/DevCamp/blob/master/HOL/dotnet/05-arm-cd).
 
-## Exercícios
+## Exercícios ##
 
 Este hands-on-lab tem os seguintes exercícios:
 
@@ -39,12 +39,15 @@ Este hands-on-lab tem os seguintes exercícios:
 * [Exercício 5: Hospede seu bot em Azure](#ex5)
 * [Exercício 6: Serviço Azure Bot](#ex6)
 
-## Exercício 1: configure seu ambiente<a name="ex1"></a>
+<a name="ex1"></a>
+
+## Exercício 1: configure seu ambiente ##
 
 Visite nosso tutorial de configuração de ambiente [neste link](https://github.com/CommunityBootcamp/Maratona-BOTs/tree/master/QuickStart)
 
+<a name="ex2"></a>
 
-## Exercício 2: Crie um diálogo interativo<a name="ex2"></a>
+## Exercício 2: Crie um diálogo interativo ##
 
 Estamos usando o template  [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) para criar o nosso bot. O template permite que você defina uma série de propriedades, incluindo aquelas baseadas em enums, que o bot irá reunir automaticamente do usuário. Podemos até mesmo modificar o texto que o bot usa para solicitar ao usuário e simplesmente adicionar expressões regulares que são verificadas pelo bot.
 
@@ -156,7 +159,9 @@ Observe como podemos usar o `IncidentTypes` enum e a propriedade booleana `Emerg
 
 Você já criou um bot simples que reúne todos os dados que precisamos para um relatório de incidente do usuário usando o template  [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow), que faz a maior parte do trabalho para você. Em seguida, você estenderá o bot para também aceitar uma imagem para o relatório.
 
-## Exercício 3: Enviar anexos ao bot<a name="ex3"></a>
+<a name="ex3"></a>
+
+## Exercício 3: Enviar anexos ao bot ##
 
 Você notou o botão de imagem ao lado da janela de mensagem? Você pode não apenas enviar mensagens de texto para o seu bot, mas também arquivos de imagem. Vamos dizer ao bot como lidar com eles.
 
@@ -242,7 +247,9 @@ Enviar a imagem não afetará o resto da sua conversa com o bot.
 
 Seu bot agora aceita e armazena uma imagem enviada pelo usuário. Agora que você tem tudo o que pode ser enviado em um relatório de incidente, você irá enviá-lo para a API de incidente.
 
-## Exercício 4: integrar a API<a name="ex4"></a>
+<a name="ex4"></a>
+
+## Exercício 4: integrar a API ##
 
 Para arquivar o incidente informado, usamos a API de incidente. Os métodos necessários estão presentes no projeto `DataWriter`. O projeto contém excertos das mãos anteriores nos laboratórios. O código foi encurtado para apenas criar um incidente e fazer o upload da imagem anexada. Para completá-lo, você deve adicionar suas informações de conta Azure.
 
@@ -296,7 +303,9 @@ Para arquivar o incidente informado, usamos a API de incidente. Os métodos nece
 
 Seu bot está pronto. Ele reúne e faz upload de dados para criar um novo relatório de incidente. Em seguida, você irá implantá-lo no Azure para torná-lo globalmente acessível.
 
-## Exercício 5: Hospede seu bot em Azure<a name="ex5"></a>
+<a name="ex5"></a>
+
+## Exercício 5: Hospede seu bot em Azure ##
 
 Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um aplicativo Azure é ideal para isso. Vamos permitir que o Visual Studio faça a publicação e crie automaticamente um novo aplicativo Azure no nosso grupo de recursos para hospedar o bot. Uma vez que o assistente de publicação do Visual Studio tenha feito isso, registraremos o bot no  [Portal do Bot Framework](https://dev.botframework.com/bots) e adicionaremos os IDs gerados para o nosso Web.config.
 
@@ -397,7 +406,9 @@ Para tornar nosso bot acessível, temos que publicá-lo em um local público. Um
 
 Agora você criou um bot manualmente e carregou-o no Azure. Uma maneira alternativa de criar um bot é usar o serviço Azure Bot.
 
-## Exercício 6: Serviço Azure Bot<a name="ex6"></a>
+<a name="ex6"></a>
+
+## Exercício 6: Serviço Azure Bot ##
 
 Você já viu alguns dos fundamentos do desenvolvimento do bot. Nos exercícios, você usou o template  [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) para criar a interação entre o usuário e o bot. Muitos outros modelos estão disponíveis. Você também pode usar o  [Serviço Azure Bot](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview) para criar rapidamente um bot a partir do portal Azure.
 
@@ -449,7 +460,7 @@ Você já viu alguns dos fundamentos do desenvolvimento do bot. Nos exercícios,
 
 Agora você viu uma maneira alternativa de criar e depurar um bot usando o Azure Bot Service. Um bot básico pode ser criado completamente sem um ambiente de desenvolvimento.
 
-## **Resumo**
+## Resumo ##
 
 Neste laboratório prático, você aprendeu a:
 
@@ -459,4 +470,4 @@ Neste laboratório prático, você aprendeu a:
 * Hospedandar seu bot em Azure.
 
 ---
-Copyright 2017 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2017 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT).

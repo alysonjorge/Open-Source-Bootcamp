@@ -95,8 +95,8 @@ namespace Microsoft.Bot.Sample.LuisBot
     public class BasicLuisDialog : LuisDialog<object>
     {
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
-            ConfigurationManager.AppSettings["LuisAppId"], 
-            ConfigurationManager.AppSettings["LuisAPIKey"], 
+            ConfigurationManager.AppSettings["LuisAppId"],
+            ConfigurationManager.AppSettings["LuisAPIKey"],
             domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
         {
         }
@@ -127,7 +127,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await this.ShowLuisResult(context, result);
         }
 
-        private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
+        private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
             await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said: {result.Query}");
             context.Wait(MessageReceived);
@@ -233,7 +233,7 @@ Para manipular a intenção Note.Create, adicione o seguinte código à classe `
                 title = new EntityRecommendation(type: Entity_Note_Title) { Entity = DefaultNoteTitle };
             }
 
-            // Create a new note object 
+            // Create a new note object
             var note = new Note() { Title = title.Entity };
             // Add the new note to the list of notes and also save it in order to add text to it later
             noteToCreate = this.noteByTitle[note.Title] = note;
