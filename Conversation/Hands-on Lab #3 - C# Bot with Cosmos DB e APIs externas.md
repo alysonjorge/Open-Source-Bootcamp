@@ -1,4 +1,4 @@
-# Hands-on Lab #3 - C# #
+# Hands-on Lab #3 - C# Bot with Cosmos DB e APIs externas #
 
 ## Visão geral
 

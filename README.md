@@ -7,8 +7,8 @@ O Open Source Bootcamp é uma iniciativa da Microsoft em parceria com comunidade
 | Laboratório | Descrição |
 | -------- | -------- |
 | [Hands-on Lab #1 - Web App Bot no Azure, QnA Maker](https://github.com/CommunityBootcamp/Open-Source-Bootcamp/blob/master/Conversation/Hands-on%20Lab%20%231%20-%20Web%20App%20Bot%20no%20Azure%2C%20QnA%20Maker.md) | Aprenda a desenvolver um Bot QnA usando o Azure e o QnA Maker |
-| [Hands-on Lab #2 - C#, Bot Service e LUIS](https://github.com/CommunityBootcamp/Open-Source-Bootcamp/blob/master/Conversation/Hands-on%20Lab%20%233%20-%20C%23.md) | Aprenda a desenvolver um Bot com entendimento de linguagem natural usando o Azure e o LUIS |
-| [Hands-on Lab #3 - C# Bot with Cosmos DB e APIs externas](https://github.com/CommunityBootcamp/Open-Source-Bootcamp/blob/master/Conversation/Hands-on%20Lab%20%232%20-%20C%23%2C%20Bot%20Service%20e%20LUIS.md) | Aprenda a integrar seu Bot com APIs da web usando o Azure e o CosmosDB |
+| [Hands-on Lab #2 - C#, Bot Service e LUIS](https://github.com/CommunityBootcamp/Open-Source-Bootcamp/blob/master/Conversation/Hands-on%20Lab%20%232%20-%20C%23%2C%20Bot%20Service%20e%20LUIS.md) | Aprenda a desenvolver um Bot com entendimento de linguagem natural usando o Azure e o LUIS |
+| [Hands-on Lab #3 - C# Bot with Cosmos DB e APIs externas](https://github.com/CommunityBootcamp/Open-Source-Bootcamp/blob/master/Conversation/Hands-on%20Lab%20%233%20-%20C%23%20Bot%20with%20Cosmos%20DB%20e%20APIs%20externas.md) | Aprenda a integrar seu Bot com APIs da web usando o Azure e o CosmosDB |
 
 ## Cloud Services ##
 
