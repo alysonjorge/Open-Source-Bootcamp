@@ -1,4 +1,4 @@
-# Hands-on Lab #2 - C# #
+# Hands-on Lab #3 - C# #
 
 ## Visão geral
 
