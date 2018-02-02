@@ -1,5 +1,7 @@
 # Hands-on Lab #2 - C#, Bot Service e LUIS #
 
+## Visão geral ##
+
 Nesse Hands-on Lab, criaremos um bot usando o Azure Bot Service, que usa o Language Understanding (LUIS) para entender o usuário. Ao criar um bot usando linguagem natural, o bot determina o que um usuário quer fazer identificando sua intenção (Intent). Essa intenção é determinada a partir de entradas faladas ou textuais, que por sua vez podem ser mapeados para ações que os determinadas no código fonte do Bot. Por exemplo, um bot de tomada de notas reconhece a intenção Notes.Create para invocar a funcionalidade para criar uma nota. Um bot também pode precisar extrair entidades (Entities), que são palavras importantes em expressões. Nesse exemplo do bot de tomada de notas, a entidade do título (Notes.title) identifica o título de cada nota.
 
 ## Criar um bot com reconhecimento de fala com o Bot Service ##

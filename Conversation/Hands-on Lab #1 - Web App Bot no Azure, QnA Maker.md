@@ -4,7 +4,7 @@
 
 <a name="Overview"></a>
 
-### Visão geral ###
+## Visão geral ##
 
 Os robôs de software estão em toda parte. Você provavelmente interage com eles todos os dias sem perceber. Bots, especialmente de bate-papo e mensagens, estão mudando a maneira como interagimos com negócios, comunidades e até mesmo entre nós mesmos. Graças aos avanços de velocidade leve na inteligência artificial (AI) e à pronta disponibilidade de serviços de AI, os bots não estão apenas se tornando mais avançados e personalizados, mas também são mais acessíveis aos desenvolvedores.
 
@@ -14,7 +14,7 @@ O  [Microsoft Bot Framework](https://dev.botframework.com/) , combinado com o  [
 
 <a name="Objectives"></a>
 
-### Objetivos ###
+## Objetivos ##
 
 Neste laboratório prático, você aprenderá como:
 
@@ -27,7 +27,7 @@ Neste laboratório prático, você aprenderá como:
 
 <a name="Prerequisites"></a>
 
-### Pré-requisitos ###
+## Pré-requisitos ##
 
 Para completar este laboratório prático, você precisará de:
 
@@ -40,7 +40,7 @@ Para completar este laboratório prático, você precisará de:
 
 <a name="Resources"></a>
 
-### Recursos ###
+## Recursos ##
 
 [Clique aqui](https://a4r.blob.core.windows.net/public/bots-resources.zip) para baixar um arquivo zip contendo o conteúdo usado ​​neste laboratório. Copie o conteúdo do arquivo zip em uma pasta no seu disco.
 
@@ -48,7 +48,7 @@ Para completar este laboratório prático, você precisará de:
 
 <a name="Exercises"></a>
 
-### Exercícios ###
+## Exercícios ##
 
 Este laboratório prático inclui os seguintes exercícios:
 
