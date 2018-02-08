@@ -125,7 +125,7 @@ _Abrindo o Serviço Bot_
 
     ![image](images/new09.PNG)
 
-1. Após crirar a sua base de conhecimento, é necessário realizar uma publicação inicial, antes da conexão com o seu Web App Bot. Para isso, clique no botão **Publish** na página da sua base de conhecimento, e **Publish** novamente na página de confirmação. A seguinte página deve ser exibida em caso de sucesso.
+1. Após criar a sua base de conhecimento, é necessário realizar uma publicação inicial, antes da conexão com o seu Web App Bot. Para isso, clique no botão **Publish** na página da sua base de conhecimento, e **Publish** novamente na página de confirmação. A seguinte página deve ser exibida em caso de sucesso.
 
     ![image](images/new10b.PNG)
 
