@@ -53,40 +53,40 @@ O primeiro passo para escrever um Azure Function é criar um  Azure Function App
 1. Abra o  [Portal Azure](https://portal.azure.com/) no seu navegador. Se solicitado a fazer login, faça isso usando sua conta Microsoft.
 1. Clique em  **+ Novo**, seguido de  **Compute**  e  **Function App**.
 
-    ![Creating an Azure Function App](Images/new-function-app.png)
+    ![Creating an Azure Function App](images/new-function-app.png)
     _Criando um Azure Function App_
 
 1. Digite um nome de aplicativo exclusivo no Azure. Em  **Grupo de recursos**, selecione  **Criar novo**  e digite &quot;FunctionsLabResourceGroup&quot; (sem aspas) como o nome do grupo de recursos para criar um grupo de recursos para o Azure Function App. Escolha a **região**  mais próxima e aceite os valores padrão para todos os outros parâmetros. Em seguida, clique em  **Criar**  para criar uma nova Aplicação de Função.
 
     > O nome do aplicativo passa a ser parte de um nome DNS e, portanto, deve ser exclusivo no Azure. Certifique-se de que uma marca de verificação verde aparece ao nome, indicando que ela é única. Você provavelmente  **não**  poderá usar &quot;functionslab&quot; como o nome do aplicativo.
 
-    ![Creating a Function App](Images/function-app-name.png)
+    ![Creating a Function App](images/function-app-name.png)
     _Criando uma Aplicação de Função_
 
 1. Clique em  **Grupos de recursos**  na faixa de opções no lado esquerdo do portal e, em seguida, clique no grupo de recursos criado para o aplicativo Função.
 
-    ![Opening the resource group](Images/open-resource-group.png)
+    ![Opening the resource group](images/open-resource-group.png)
     _Abrindo o grupo de recursos_
 
 1. Clique periodicamente no botão  **Atualizar** na parte superior da lâmina até &quot;o status da Implantação&quot; mude para &quot;Sucesso&quot;, indicando que o Azure Function App foi implantado. Em seguida, clique na conta de armazenamento que foi criada para o Azure Function App.
 
-    ![Opening the storage account](Images/open-storage-account.png)
+    ![Opening the storage account](images/open-storage-account.png)
     _Abrindo a conta de armazenamento_
 
 1. Clique em  **Blobs**  para ver o conteúdo do armazenamento blob.
 
-    ![Opening blob storage](Images/open-blob-storage.png)
+    ![Opening blob storage](images/open-blob-storage.png)
     _Abertura blob armazenamento_
 
 1. Clique em  **+ container**. Digite &quot;carregado&quot; na caixa  **Nome**  e defina o  **nível de acesso público**  como  **privado**. Em seguida, clique no botão  **OK**  para criar um novo contêiner.
 
-    ![Adding a container](Images/add-container.png)
+    ![Adding a container](images/add-container.png)
     _Adicionando um container_
 
 1. Repita a Etapa 7 para adicionar containers denominados &quot;aceitos&quot; e &quot;rejeitados&quot; para bloquear o armazenamento.
 1. Confirme se os três containers foram adicionados ao armazenamento blob.
 
-    ![The new containers](Images/new-containers.png)
+    ![The new containers](images/new-containers.png)
     _Os novos containers_
 
  Azure Function App foi criada e você adicionou três contêineres à conta de armazenamento criada para ela. O próximo passo é adicionar uma Azure Function.
@@ -99,22 +99,22 @@ Depois de criar um Azure Function App Azure, você pode adicionar Funções Azur
 
 1. Retorne à lâmina para o grupo de recursos &quot;FunctionsLabResourceGroup&quot; e clique n Azure Function App que você criou no  [Exercício 1](#Exercise1).
 
-    ![Opening the Function App](Images/open-function-app.png)
+    ![Opening the Function App](images/open-function-app.png)
     _Abrindo a Aplicação de Função_
 
 1. Clique no sinal  **+**  à direita das  **Funções**. Defina o idioma para  **CSharp**  e, em seguida, clique em  **Função personalizada**.
 
-    ![Adding a function](Images/add-function.png)
+    ![Adding a function](images/add-function.png)
     _Adicionando uma função_
 
 1. Definir  **Idioma**  para  **C#**. Em seguida, clique em  **BlobTrigger - C#**.
 
-    ![Selecting a function template](Images/cs-select-template.png)
+    ![Selecting a function template](images/cs-select-template.png)
     _Selecionando um modelo de função_
 
 1. Digite &quot;BlobImageAnalysis&quot; (sem aspas) para o nome da função e &quot;uploaded / {name}&quot; na caixa  **Path**. (O último aplica o trigger de armazenamento blob ao contêiner &quot;carregado&quot; que você criou no Exercício 1.) Em seguida, clique no botão  **Criar**  para criar a Azure Function.
 
-    ![Creating an Azure Function](Images/create-azure-function.png)
+    ![Creating an Azure Function](images/create-azure-function.png)
     _Criando uma Azure Function_
 
 1. Substitua o código mostrado no editor de código com as seguintes instruções:
@@ -234,12 +234,12 @@ Run é o método chamado cada vez que a função é executada. O método Run usa
 
 1. Clique no botão  **Salvar**  na parte superior do editor de código para salvar suas alterações. Em seguida, clique em  **Exibir arquivos**.
 
-    ![Saving the function](Images/cs-save-run-csx.png)
+    ![Saving the function](images/cs-save-run-csx.png)
     _Salvando a função_
 
 1. Clique em  **+ Adicionar**  para adicionar um novo arquivo e nomeie o arquivo  **project.json**.
 
-    ![Adding a project file](Images/cs-add-project-file.png)
+    ![Adding a project file](images/cs-add-project-file.png)
     _Adicionando um arquivo de projeto_
 
 1. Adicione as seguintes declarações ao  **project.json** :
@@ -260,7 +260,7 @@ Run é o método chamado cada vez que a função é executada. O método Run usa
 
 1. Clique no botão  **Salvar**  para salvar suas alterações. Em seguida, clique em  **executar.csx**  para voltar a esse arquivo no editor de código.
 
-    ![Saving the project file](Images/cs-save-project-file.png)
+    ![Saving the project file](images/cs-save-project-file.png)
     _Salvando o arquivo do projeto_
 
 Foi criada uma Azure Function escrita em C#, com um arquivo de projeto JSON contendo informações sobre dependências de projetos. O próximo passo é adicionar uma configuração de aplicativo em que a Azure Function se baseia.
@@ -273,42 +273,42 @@ A Azure Function que você criou no  [Exercício 2](#Exercise2) carrega uma chav
 
 1. No Portal Azure, clique em  **+ Novo**, seguido por  **AI + Cognitive Services**  e  **Computer Vision API**.
 
-    ![Creating a new Computer Vision API subscription](Images/new-vision-api.png)
+    ![Creating a new Computer Vision API subscription](images/new-vision-api.png)
     _Criando uma nova assinatura da API Computer Vision_
 
 1. Digite &quot;VisionAPI&quot; na caixa  **Nome**  e selecione  **F0**  como  **Nível de Preços**. Em  **Grupo de Recursos**, selecione  **Usar existente**  e selecione o grupo de recursos &quot;FunctionsLabResourceGroup&quot; que você criou para a Aplicação de Função no Exercício 1. Marque a caixa  **Confirmar**  e, em seguida, clique em  **Criar**.
 
-    ![Subcribing to the Computer Vision API](Images/create-vision-api.png)
+    ![Subcribing to the Computer Vision API](images/create-vision-api.png)
     _Inscrevendo-se na API Computer Vision_
 
 1. Retorne à lâmina para &quot;FunctionsLabResourceGroup&quot; e clique na assinatura da API Computer Vision que você acabou de criar.
 
-    ![Opening the Computer Vision API subscription](Images/open-vision-api.png)
+    ![Opening the Computer Vision API subscription](images/open-vision-api.png)
     _Abrindo a assinatura da API Computer Vision_
 
 1. Copie o URL em  **Endpoint**  para o seu editor de texto favorito para que você possa recuperá-lo facilmente em um momento. Em seguida, clique em  **Mostrar chaves de acesso**.
 
-    ![Viewing the access keys](Images/show-access-keys.png)
+    ![Viewing the access keys](images/show-access-keys.png)
     _Visualizando as teclas de acesso_
 
 1. Clique no botão  **Copiar**  à direita da  **CHAVE 1**  para copiar a tecla de acesso para a área de transferência.
 
-    ![Copying the access key](Images/copy-access-key.png)
+    ![Copying the access key](images/copy-access-key.png)
     _Copiando a chave de acesso_
 
 1. Retorne à Aplicação de Função no Portal Azure e clique no nome do aplicativo na faixa à esquerda. Em seguida, clique em  **Configurações do aplicativo**.
 
-    ![Viewing application settings](Images/open-app-settings.png)
+    ![Viewing application settings](images/open-app-settings.png)
     _Visualizando as configurações do aplicativo_
 
 1. Desça até a seção &quot;Configurações do aplicativo&quot;. Adicione uma nova configuração de aplicativo chamada &quot;Inscrição&quot; (sem aspas) e cole a chave de assinatura que está na área de transferência na caixa  **Valor**. Em seguida, adicione uma configuração chamada &quot;VisionEndpoint&quot; e defina seu valor para o URL do nó de extremidade que você salvou na Etapa 4. Finalize clicando em  **Salvar**  na parte superior da lâmina.
 
-    ![Adding application settings](Images/add-keys.png)
+    ![Adding application settings](images/add-keys.png)
     _Adicionando configurações do aplicativo_
 
 1. As configurações do aplicativo agora estão configuradas para sua Azure Function. É uma boa ideia validar essas configurações executando a função e garantindo que compila sem erros. Clique em  **BlobImageAnalysis**. Em seguida, clique em  **Executar**  para compilar e executar a função. Confirme se nenhum erro de compilação aparece no log de saída e ignora quaisquer exceções relatadas.
 
-    ![Compiling the function](Images/cs-run-function.png)
+    ![Compiling the function](images/cs-run-function.png)
     _Compilando a função_
 
 O trabalho de escrever e configurar a Azure Function está completo. Agora vem a parte divertida: testando.
@@ -321,49 +321,49 @@ Sua função está configurada para ouvir as alterações no contêiner blob cha
 
 1. No Portal Azure, vá para o grupo de recursos criado para sua Aplicação de Função. Em seguida, clique na conta de armazenamento que foi criada para isso.
 
-    ![Opening the storage account](Images/open-storage-account-2.png)
+    ![Opening the storage account](images/open-storage-account-2.png)
     _Abrindo a conta de armazenamento_
 
 1. Clique em  **Blobs**  para ver o conteúdo do armazenamento blob.
 
-    ![Opening blob storage](Images/open-blob-storage.png)
+    ![Opening blob storage](images/open-blob-storage.png)
     _Abertura blob armazenamento_
 
 1. Clique  **carregado**  para abrir o contêiner &quot;carregado&quot;.
 
-    ![Opening the "uploaded" container](Images/open-uploaded-container.png)
+    ![Opening the "uploaded" container](images/open-uploaded-container.png)
     _Abrindo o container &quot;carregado&quot;_
 
 1. Clique em  **Carregar**.
 
-    ![Uploading images to the "uploaded" container](Images/upload-images-1.png)
+    ![Uploading images to the "uploaded" container](images/upload-images-1.png)
     _Fazendo o upload de imagens para o container &quot;carregado&quot;_
 
 1. Clique no botão com o ícone da pasta à direita da caixa de  **arquivos**. Selecione todos os arquivos na pasta &quot;Recursos&quot; deste laboratório. Em seguida, clique no botão  **Carregar**  para carregar os arquivos no container &quot;carregado&quot;.
 
-    ![Uploading images to the "uploaded" container](Images/upload-images-2.png)
+    ![Uploading images to the "uploaded" container](images/upload-images-2.png)
     _Fazendo o upload de imagens para o container &quot;carregado&quot;_
 
 1. Retorne à lâmina para o container &quot;carregado&quot; e verifique se foram carregadas oito imagens.
 
-    ![Images uploaded to the "uploaded" container](Images/uploaded-images.png)
+    ![Images uploaded to the "uploaded" container](images/uploaded-images.png)
     _Imagens carregadas para o contentor &quot;carregado&quot;_
 
 1. Feche a lâmina para o container &quot;carregado&quot; e abra o container &quot;aceito&quot;.
 
-    ![Opening the "accepted" container](Images/open-accepted-container.png)
+    ![Opening the "accepted" container](images/open-accepted-container.png)
     _Abrindo o container &quot;aceito&quot;_
 
 1. Verifique se o container &quot;aceito&quot; contém sete imagens.  **Estas são as imagens que foram classificadas como nem adulta nem raça pela API Computer Vision**.
 
     > Como você escolheu &quot;Plano de Consumo&quot; ao criar a Aplicação de Função, pode levar alguns minutos para que todas as imagens apareçam no contêiner. Se necessário, clique em  **Atualizar**  periodicamente até ver todas as sete imagens.
 
-    ![Images in the "accepted" container](Images/accepted-images.png)
+    ![Images in the "accepted" container](images/accepted-images.png)
     _Imagens no container &quot;aceito&quot;_
 
 1. Feche a lâmina para o container &quot;aceito&quot; e abra a lâmina para o container &quot;rejeitado&quot;. Verifique se o container &quot;rejeitado&quot; contém uma imagem. **Esta imagem foi classificada como adulto ou racy (ou ambos) pela API Computer Vision**.
 
-    ![Images in the "rejected" container](Images/rejected-images.png)
+    ![Images in the "rejected" container](images/rejected-images.png)
     _Imagens no container &quot;rejeitado&quot;_
 
 A presença de sete imagens no container &quot;aceito&quot; e um no container &quot;rejeitado&quot; é prova de que sua Azure Function executada sempre que uma imagem foi carregada no container &quot;carregado&quot;. Se você quiser, volte para a função BlobImageAnalysis no portal e clique em  **Monitor**. Você verá um registro detalhando cada vez que a função for executada.
@@ -382,17 +382,17 @@ Neste exercício, você usará o  [Microsoft Azure Storage Explorer de](http://s
 
 1. Encontre a conta de armazenamento que foi criada para a su Azure Function App no  [Exercício 1](#Exercise1) e expanda a lista de contêineres de blob embaixo dela. Em seguida, clique no container denominado &quot;rejeitado&quot;.
 
-    ![Opening the "rejected" container](Images/explorer-open-rejected-container.png)
+    ![Opening the "rejected" container](images/explorer-open-rejected-container.png)
     _Abrindo o container &quot;rejeitado&quot;_
 
 1. Clique com o botão direito do mouse (em um Mac, Comando-clique) na imagem no container &quot;rejeitado&quot; e selecione  **Propriedades**  no menu de contexto.
 
-    ![Viewing blob metadata](Images/explorer-view-blob-metadata.png)
+    ![Viewing blob metadata](images/explorer-view-blob-metadata.png)
     _Exibindo metadados de blob_
 
 1. Inspecione os metadados do blob. _IsAdultContent_ e _isRacyContent_ são valores booleanos que indicam se a API Computer Vision detectou conteúdo adulto ou racista na imagem. _Adultcore_ e _racyScore_ são as probabilidades calculadas.
 
-    ![Scores returned by the Computer Vision API](Images/explorer-metadata-values.png)
+    ![Scores returned by the Computer Vision API](images/explorer-metadata-values.png)
     _Pontuações retornadas pela API Computer Vision_
 
 1. Abra o container &quot;aceito&quot; e inspecione os metadados para algumas das bolhas armazenadas lá. Como esses valores de metadados são diferentes dos anexados ao blob no container &quot;rejeitado&quot;?
